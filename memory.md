@@ -228,3 +228,36 @@ cd /Users/seonwoo/Documents/GitHub/kims-working && python3 -m http.server 4173
 3. `git log --oneline -5`로 원격과 맞춰야 할 커밋 여부 확인
 4. 사용자에게 지난 핸드오프와 맞춰 이어서 할 일 확인
 5. 작업 끝나면 이 파일의 「세션 로그」에 오늘 한 일·결정·남은 일 추가
+
+---
+
+## 2026-05-17 (저녁) — 디자인 시스템 토큰화 & DESIGN.md 작성
+
+### 한 일
+- `/design-consultation` 스킬로 기존 Mastercard 시스템을 **보완 (옵션 A)**
+- **Pretendard Variable 도입**: Inter + Noto Sans KR 의 한·영 이중 폰트 조합을 폐기하고 단일 가변 폰트로 통합 → 한글/Latin 자폭·행간 어긋남 해소
+- **CSS 토큰 시스템 확장** (`assets/styles.css` `:root`):
+  - 색상: `--bone`, `--clay`, `--granite` + 시맨틱 `--success/--error/--warning/--info` (각 `*-surface` 포함)
+  - 타이포: `--text-xs..--text-hero`, `--lh-tight/snug/normal/relaxed` (한국어 튜닝)
+  - 스페이싱: 8px 베이스 `--space-1..--space-32`
+  - 라운드: `--radius-xs/sm/md/lg/card/section/pill`
+  - 그림자 3단계: `--shadow-1/2/3` + `--shadow-orange` 유지
+  - 모션: `--duration-fast/base/slow/deliberate` + `--ease-out/in-out`
+  - 포커스: `--focus-ring`, `--focus-offset`
+- **하드코드 제거**: form-alert 의 `#fff2ed`/`#9a3a0a`/`#eef8f0`/`#245730` 을 시맨틱 토큰으로 교체. `.18s ease` / `.22s ease` / `.7s cubic-bezier(...)` 인라인 → 모두 모션 토큰 사용
+- **신규 `DESIGN.md`** 295줄: 단일 소스. Mastercard 영감 + 실제 구현 토큰 + 컴포넌트 인벤토리 + Do/Don't + 미래 갭(다크모드 보류 결정)
+- **`CLAUDE.md` 업데이트**: 디자인 섹션을 DESIGN.md 참조형으로 재작성. `DESIGN-mastercard.md` 는 영감 레퍼런스로 좌천
+
+### 검증
+- 로컬 서버 (`python3 -m http.server 4173`) 응답 200
+- CSS 중괄호 균형 OK (136/136), 필수 토큰 13종 전부 존재
+- Pretendard CDN (`cdn.jsdelivr.net/.../v1.3.9`) 도달 200
+
+### 미수행 (의도적으로 보류)
+- 다크모드 (랜딩 1회성 ROI 부족, DESIGN.md §14 에 명시)
+- 토큰 `--bone`, `--space-1`, `--text-xs` 등 일부는 예약 (현재 페이지 미사용)
+
+### 다음 세션 후보
+- Pretendard 로딩 실패 시 폴백 시각 확인 (네트워크 차단 환경 시뮬레이션)
+- 폼 에러/성공 상태 실제 트리거해서 시맨틱 색상 대비 검수
+- 미커밋: `DESIGN.md` 신규, `CLAUDE.md`/`index.html`/`assets/styles.css` 수정. 친구 분께 보내기 전 의미 있는 커밋으로 정리 권장

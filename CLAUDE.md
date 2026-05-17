@@ -32,18 +32,23 @@ This project is a static lead-generation landing page for a child fingerprint ap
 
 ## Design System
 
-Use the Mastercard-inspired design system documented in `DESIGN-mastercard.md`.
+**Single source of truth: `DESIGN.md`** (Mastercard-inspired tokens, Korean-tuned typography).
+Background reference: `DESIGN-mastercard.md` (visual inspiration, not used directly).
 
-Key tokens:
+All CSS tokens live in `assets/styles.css` `:root`. Use them — never inline raw hex, px, or duration values.
 
-- Canvas cream: `#F3F0EE`
-- Lifted cream: `#FCFBFA`
-- Ink black: `#141413`
-- Signal orange: `#CF4500`
-- Light orange orbit: `#F37338`
-- Link blue: `#3860BE`
-- Large radii: `20px`, `32px`, `40px`, `9999px`
-- Typography: `Inter`, `Noto Sans KR`, system sans-serif
+Key tokens (excerpt — see `DESIGN.md` for full list):
+
+- Canvas cream: `var(--canvas)` `#F3F0EE`
+- Surface: `var(--surface)` `#FCFBFA`
+- Ink black: `var(--ink)` `#141413`
+- Signal orange: `var(--orange)` `#CF4500`, light orbit `var(--orange-light)` `#F37338`
+- Link blue: `var(--link)` `#3860BE`
+- Semantic: `--success`, `--error`, `--warning`, `--info` (each with matching `*-surface`)
+- Radii: `--radius-md` (20) / `--radius-card` (32) / `--radius-section` (40) / `--radius-pill` (9999). Skip 8–16px.
+- Spacing: 8px base (`--space-2` … `--space-32`)
+- Typography: **Pretendard Variable** (single family for Hangul + Latin), `--text-*` and `--lh-*` tokens
+- Motion: `var(--duration-base) var(--ease-out)` — never inline `.18s ease`
 
 Style principles:
 
@@ -51,7 +56,8 @@ Style principles:
 - Use circles, pills, rounded cards, and thin orange orbit lines.
 - Avoid sharp rectangular UI unless technically necessary.
 - Use orange sparingly as a signal/accent color.
-- Preserve Korean readability with `word-break: keep-all`.
+- Preserve Korean readability with `word-break: keep-all` and `--lh-normal`/`--lh-relaxed`.
+- Read `DESIGN.md` before any visual change. Do not deviate without explicit user approval.
 
 ## Required Page Sections
 
@@ -75,7 +81,8 @@ Style principles:
 - `assets/script.js` — form validation and Google Apps Script submission.
 - `apps-script/Code.gs` — Google Apps Script backend template.
 - `docs/superpowers/specs/2026-05-13-fingerprint-aptitude-landing-design.md` — product/design spec.
-- `DESIGN-mastercard.md` — visual system reference.
+- `DESIGN.md` — design system single source of truth (tokens, scales, rules).
+- `DESIGN-mastercard.md` — Mastercard visual inspiration reference (background).
 - `.superpowers/brainstorm/65271-1778680010/content/mastercard-v10.html` — final approved mockup.
 - `memory.md` — session memory and decisions.
 

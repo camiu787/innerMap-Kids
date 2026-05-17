@@ -1,20 +1,97 @@
 :root {
+  /* Surfaces — warm cream stack, never pure white as canvas */
   --canvas: #f3f0ee;
   --surface: #fcfbfa;
+  --bone: #f4f4f4;
   --white: #ffffff;
+
+  /* Text & lines */
   --ink: #141413;
   --charcoal: #262627;
+  --granite: #555555;
   --muted: #696969;
   --line: #d1cdc7;
+
+  /* Brand & accent */
   --orange: #cf4500;
   --orange-light: #f37338;
+  --clay: #9a3a0a;
   --link: #3860be;
-  --shadow: 0 24px 48px rgba(20, 20, 19, 0.06);
-  --shadow-orange: 0 32px 64px rgba(207, 69, 0, 0.22);
-  --radius-section: 40px;
+
+  /* Semantic */
+  --success: #245730;
+  --success-surface: #eef8f0;
+  --warning: #a35200;
+  --warning-surface: #fff5e8;
+  --error: #cf4500;
+  --error-surface: #fff2ed;
+  --info: #3860be;
+  --info-surface: #eaf0fb;
+
+  /* Typography — Pretendard handles Hangul + Latin natively, no Inter/Noto seam */
+  --font-sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Noto Sans KR', system-ui, sans-serif;
+  --font: var(--font-sans);
+
+  /* Type scale (tuned for Korean reading — slightly larger body than English defaults) */
+  --text-xs: 12px;
+  --text-sm: 13px;
+  --text-base: 15px;
+  --text-md: 16px;
+  --text-lg: 18px;
+  --text-xl: 22px;
+  --text-2xl: 28px;
+  --text-3xl: clamp(28px, 4vw, 40px);
+  --text-4xl: clamp(34px, 4.2vw, 44px);
+  --text-hero: clamp(36px, 4.5vw, 52px);
+
+  /* Line-height — Hangul needs more vertical room than Latin */
+  --lh-tight: 1.18;
+  --lh-snug: 1.35;
+  --lh-normal: 1.55;
+  --lh-relaxed: 1.7;
+
+  /* Spacing — 8px base, +4px micro */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Radius — Mastercard scale: small / button / card / section / pill */
+  --radius-xs: 6px;
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 24px;
   --radius-card: 32px;
+  --radius-section: 40px;
   --radius-pill: 9999px;
-  --font: Inter, "Noto Sans KR", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+
+  /* Elevation — atmospheric, never hard drops */
+  --shadow-1: 0 4px 24px rgba(20, 20, 19, 0.04);
+  --shadow-2: 0 24px 48px rgba(20, 20, 19, 0.06);
+  --shadow-3: 0 32px 64px rgba(20, 20, 19, 0.10);
+  --shadow-orange: 0 32px 64px rgba(207, 69, 0, 0.22);
+  --shadow: var(--shadow-2);
+
+  /* Motion */
+  --duration-fast: 120ms;
+  --duration-base: 180ms;
+  --duration-slow: 280ms;
+  --duration-deliberate: 700ms;
+  --ease-out: cubic-bezier(.22, 1, .36, 1);
+  --ease-in-out: cubic-bezier(.4, 0, .2, 1);
+
+  /* Focus */
+  --focus-ring: 0 0 0 3px rgba(243, 115, 56, .45);
+  --focus-offset: 3px;
 }
 
 * { box-sizing: border-box; }
@@ -24,9 +101,12 @@ body {
   background: var(--canvas);
   color: var(--ink);
   font-family: var(--font);
+  font-size: var(--text-md);
+  line-height: var(--lh-normal);
   word-break: keep-all;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 a { color: inherit; text-decoration: none; }
 button, input { font: inherit; }
@@ -57,7 +137,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
   justify-content: center;
   gap: 10px;
   border: 0;
-  transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+  transition: transform var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out), background var(--duration-base) var(--ease-out);
 }
 .button svg { width: 18px; height: 18px; }
 .button--primary, .button--submit {
@@ -72,11 +152,14 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .button:active { transform: translateY(0) scale(.99); }
 .button:focus-visible, input:focus-visible, .consent:has(input:focus-visible), .dialog-close:focus-visible { outline: 3px solid rgba(243, 115, 56, .45); outline-offset: 3px; }
 
-.hero { position: relative; overflow: hidden; padding: 88px 0 104px; background: linear-gradient(rgba(243,240,238,0.55), rgba(243,240,238,0.55)), url('hero-bg.svg') center/cover no-repeat; }
+.hero { position: relative; overflow: hidden; padding: 88px 0 104px; background: var(--canvas); }
+.hero__fp { position: absolute; top: 50%; right: -12%; width: 75%; height: 130%; transform: translateY(-50%); pointer-events: none; color: var(--orange); opacity: 0.11; }
+.hero__fp path { fill: none; stroke: currentColor; stroke-width: 1.3; }
+.hero__fp circle { fill: currentColor; stroke: none; }
 .hero__watermark { position: absolute; top: 50%; right: -56px; transform: translateY(-50%); color: #e8e3de; font-size: clamp(90px, 16vw, 220px); font-weight: 600; letter-spacing: -0.04em; line-height: 1; opacity: .72; pointer-events: none; }
 .orbit { position: absolute; pointer-events: none; color: var(--orange-light); }
 .orbit path, .orbit ellipse { stroke: currentColor; fill: none; opacity: .55; }
-.orbit--hero { left: 0; top: 50%; width: 100%; height: 340px; transform: translateY(-50%); }
+.orbit--hero { left: 0; top: 50%; width: 100%; height: 340px; transform: translateY(-50%); opacity: 0.5; }
 .orbit--promise { inset: 50% auto auto 50%; width: min(96%, 920px); height: 150%; transform: translate(-50%, -50%); opacity: .22; }
 .hero__grid {
   position: relative;
@@ -111,15 +194,16 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .section-heading { text-align: center; margin-bottom: 56px; }
 .section-heading h2 { margin: 0; font-size: clamp(34px, 4.2vw, 44px); line-height: 1.18; font-weight: 600; letter-spacing: -0.025em; }
 .value-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 1080px; margin: 0 auto; }
-.info-card, .step-card { background: var(--canvas); border-radius: var(--radius-card); padding: 36px 32px; transition: transform .22s ease, box-shadow .22s ease; }
-.info-card:hover, .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.info-card, .step-card { background: var(--canvas); border-radius: var(--radius-card); padding: 36px 32px; }
+.info-card, .step-card { transition: transform var(--duration-slow) var(--ease-out), box-shadow var(--duration-slow) var(--ease-out); }
+.info-card:hover, .step-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-2); }
 .icon-circle { width: 64px; height: 64px; display: grid; place-items: center; margin-bottom: 24px; background: var(--white); border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,.04); }
 .icon-circle svg { width: 30px; height: 30px; stroke-width: 1.6; }
 .icon-circle--large { width: 72px; height: 72px; margin: 0 auto 22px; }
 .card-label { margin: 0 0 10px; color: var(--orange); font-size: 13px; font-weight: 800; letter-spacing: .65px; text-transform: uppercase; }
 .info-card h3, .step-card h3 { margin: 0 0 10px; font-size: 24px; line-height: 1.22; font-weight: 600; letter-spacing: -0.02em; }
-.info-card p:last-child, .step-card p:last-child { margin: 0; color: var(--charcoal); font-size: 15px; line-height: 1.58; }
-.card-subtitle { color: #555 !important; font-size: 16px !important; font-weight: 600; line-height: 1.35 !important; }
+.info-card p:last-child, .step-card p:last-child { margin: 0; color: var(--charcoal); font-size: var(--text-base); line-height: var(--lh-relaxed); }
+.card-subtitle { color: var(--granite) !important; font-size: var(--text-md) !important; font-weight: 600; line-height: var(--lh-snug) !important; }
 
 .steps { padding: 80px 60px 96px; }
 .step-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; max-width: 1080px; margin: 0 auto; }
@@ -130,12 +214,12 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .lead-form { background: var(--surface); border-radius: var(--radius-section); box-shadow: var(--shadow); padding: 36px; }
 .form-alert { display: none; margin-bottom: 18px; padding: 14px 16px; border-radius: 18px; font-size: 14px; line-height: 1.45; }
 .form-alert.is-visible { display: block; }
-.form-alert.is-error { background: #fff2ed; color: #9a3a0a; }
-.form-alert.is-success { background: #eef8f0; color: #245730; }
+.form-alert.is-error { background: var(--error-surface); color: var(--clay); }
+.form-alert.is-success { background: var(--success-surface); color: var(--success); }
 .field { display: block; margin-bottom: 16px; }
 .field span { display: block; margin: 0 8px 8px; color: var(--ink); font-size: 13px; font-weight: 700; }
 .field em { color: var(--orange); font-style: normal; }
-.field input { width: 100%; border: 1px solid transparent; background: var(--white); border-radius: var(--radius-pill); padding: 15px 22px; color: var(--ink); font-size: 15px; transition: border-color .18s ease, box-shadow .18s ease; }
+.field input { width: 100%; border: 1px solid transparent; background: var(--white); border-radius: var(--radius-pill); padding: 15px 22px; color: var(--ink); font-size: var(--text-base); transition: border-color var(--duration-base) var(--ease-out), box-shadow var(--duration-base) var(--ease-out); }
 .field input::placeholder { color: #b6b0a7; }
 .field input:hover { border-color: rgba(20,20,19,.14); }
 .field.is-invalid input { border-color: var(--orange); box-shadow: 0 0 0 4px rgba(207,69,0,.08); }
@@ -156,13 +240,13 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .site-footer p { margin: 0 0 12px; color: #a4a097; font-size: 12px; font-weight: 800; letter-spacing: .6px; text-transform: uppercase; }
 .site-footer small { color: #787671; font-size: 13px; line-height: 1.6; }
 
-.privacy-dialog { width: min(520px, calc(100% - 32px)); border: 0; border-radius: 28px; padding: 34px; background: var(--surface); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.28); }
+.privacy-dialog { width: min(520px, calc(100% - 32px)); border: 0; border-radius: var(--radius-card); padding: 34px; background: var(--surface); color: var(--ink); box-shadow: var(--shadow-3); }
 .privacy-dialog::backdrop { background: rgba(20,20,19,.46); }
 .privacy-dialog h2 { margin: 0 0 14px; font-size: 24px; }
 .privacy-dialog p { color: var(--charcoal); line-height: 1.7; }
 .dialog-close { position: absolute; top: 18px; right: 18px; width: 36px; height: 36px; border: 0; border-radius: 50%; background: var(--white); font-size: 24px; line-height: 1; }
 
-.reveal { opacity: 0; transform: translateY(18px); animation: reveal .7s cubic-bezier(.22, 1, .36, 1) forwards; }
+.reveal { opacity: 0; transform: translateY(18px); animation: reveal var(--duration-deliberate) var(--ease-out) forwards; }
 .reveal--delay { animation-delay: .12s; }
 @keyframes reveal { to { opacity: 1; transform: translateY(0); } }
 
