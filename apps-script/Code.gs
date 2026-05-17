@@ -7,9 +7,9 @@
  * 3. Deploy as Web app: Execute as "Me", Who has access "Anyone".
  * 4. Copy the Web app URL into assets/script.js -> APPS_SCRIPT_URL.
  */
-const SHEET_ID = 'PASTE_GOOGLE_SHEET_ID_HERE';
+const SHEET_ID = '1ElDCHvONz6QgbRMGxVD5Kr0MnDPS1tR2lMcNviuayMY';
 const SHEET_NAME = '신청내역';
-const NOTIFY_EMAIL = 'friend@example.com';
+const NOTIFY_EMAIL = 'camiu787@gmail.com';
 
 function doPost(e) {
   try {
