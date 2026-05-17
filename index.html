@@ -23,18 +23,14 @@
 
       <div class="container hero__grid">
         <div class="hero__copy reveal">
-          <p class="eyebrow"><span></span>2026 special event</p>
-          <h1 id="hero-title">지문 적성검사<br />이벤트</h1>
+          <p class="hero__brand">지문아이</p>
+          <h1 id="hero-title">지문 적성검사 이벤트</h1>
           <p class="hero__lead">아이의 손끝에서 시작되는 9가지 다중지능 분석.<br />전문가 1:1 상담, 지금 무료로 받아보세요.</p>
           <div class="hero__actions">
             <a class="button button--primary" href="#apply" data-scroll-to-form>
               무료 상담 신청
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
-            <span class="hero__meta">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>
-              신청 5분 · 비대면 가능
-            </span>
           </div>
         </div>
 
@@ -88,8 +84,8 @@
         <article class="info-card reveal">
           <div class="icon-circle"><svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M13 3v5h5M8 13h8M8 17h7"/></svg></div>
           <p class="card-label">학습 성향</p>
-          <h3>어떻게 공부할 때<br />가장 잘 흡수하는지</h3>
-          <p>시각형 · 청각형 · 체험형 중 우리 아이에게 자연스러운 학습 방식을 찾습니다.</p>
+          <h3>유형별 추천 학습법</h3>
+          <p>안정형, 감성형, 관찰형 등 유형에 따른 추천 학습 성향 및 추천 학습법을 알려줍니다.</p>
         </article>
         <article class="info-card reveal">
           <div class="icon-circle"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.4"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M15 18c.4-2 2.3-3.5 4.5-3.5"/></svg></div>
@@ -174,10 +170,20 @@
             </label>
           </div>
 
-          <label class="consent">
-            <input name="privacy" type="checkbox" required />
-            <span>개인정보 수집 및 이용에 동의합니다 <button type="button" data-open-privacy>(약관 보기)</button></span>
-          </label>
+          <div class="consent-group">
+            <label class="consent">
+              <input name="privacy1" type="checkbox" required />
+              <span>개인정보의 수집 및 이용 <em class="consent-required">(필수)</em> <button type="button" data-open-privacy="1">(약관 보기)</button></span>
+            </label>
+            <label class="consent">
+              <input name="privacy2" type="checkbox" required />
+              <span>개인정보의 제3자 제공 <em class="consent-required">(필수)</em> <button type="button" data-open-privacy="2">(약관 보기)</button></span>
+            </label>
+            <label class="consent">
+              <input name="privacy3" type="checkbox" />
+              <span>개인정보의 마케팅 활용 <em class="consent-optional">(선택)</em> <button type="button" data-open-privacy="3">(약관 보기)</button></span>
+            </label>
+          </div>
           <small class="field-error consent-error" id="privacyError"></small>
 
           <button class="button button--submit" type="submit">
@@ -196,10 +202,24 @@
     </div>
   </footer>
 
-  <dialog class="privacy-dialog" id="privacyDialog" aria-labelledby="privacy-title">
+  <dialog class="privacy-dialog" id="privacyDialog1" aria-labelledby="privacy-title-1">
     <button class="dialog-close" type="button" data-close-privacy aria-label="닫기">×</button>
-    <h2 id="privacy-title">개인정보 수집 및 이용 안내</h2>
+    <h2 id="privacy-title-1">개인정보의 수집 및 이용 안내</h2>
     <p>상담 신청을 위해 학부모 이름, 연락처, 거주 지역, 자녀 수, 자녀 나이를 수집합니다. 수집된 정보는 상담 안내와 일정 조율 목적으로만 사용되며, 목적 달성 후 관련 법령에 따라 안전하게 보관 또는 파기됩니다.</p>
+    <button class="button button--primary" type="button" data-close-privacy>확인했습니다</button>
+  </dialog>
+
+  <dialog class="privacy-dialog" id="privacyDialog2" aria-labelledby="privacy-title-2">
+    <button class="dialog-close" type="button" data-close-privacy aria-label="닫기">×</button>
+    <h2 id="privacy-title-2">개인정보의 제3자 제공 안내</h2>
+    <p>수집된 개인정보는 지문 적성검사 전문 상담사에게 제공될 수 있으며, 상담 목적 외의 용도로는 사용되지 않습니다. 제3자 제공에 동의하지 않으실 경우 서비스 이용이 제한될 수 있습니다.</p>
+    <button class="button button--primary" type="button" data-close-privacy>확인했습니다</button>
+  </dialog>
+
+  <dialog class="privacy-dialog" id="privacyDialog3" aria-labelledby="privacy-title-3">
+    <button class="dialog-close" type="button" data-close-privacy aria-label="닫기">×</button>
+    <h2 id="privacy-title-3">개인정보의 마케팅 활용 안내</h2>
+    <p>이벤트, 신규 프로그램, 유용한 육아 정보 등 마케팅 목적으로 연락처를 활용할 수 있습니다. 동의하지 않으셔도 상담 신청에는 영향이 없습니다.</p>
     <button class="button button--primary" type="button" data-close-privacy>확인했습니다</button>
   </dialog>
 

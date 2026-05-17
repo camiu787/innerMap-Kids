@@ -185,7 +185,40 @@ cd /Users/seonwoo/Documents/GitHub/kims-working && python3 -m http.server 4173
 - 깃허브·협업: 이 PC에서 타인 계정 가입보다 레포 초대(collaborator) 권장 — 별도 대화로 안내함
 - **이 세션 종료 시 핸드오프**: 상단 「현재 상태」「다음 세션에서 맨 먼저 할 만한 순서」 참고
 
-### (다음 세션 여기에 추가)
+### 2026-05-17 (3차 세션)
+
+#### GitHub Pages 배포 완료
+- `camiu787/innerMap-Kids` 레포 Public 전환 → GitHub Pages 활성화
+- 배포 URL: `https://camiu787.github.io/innerMap-Kids/` ✅ 정상 확인
+
+#### 히어로 섹션 수정
+- `2026 SPECIAL EVENT` eyebrow 텍스트 제거
+- `지문아이` 브랜드명 추가 — h1 위, 42px 오렌지 굵은 글씨
+- h1 `지문 적성검사 이벤트` 한 줄로 수정 (font-size `clamp(36px,4.5vw,52px)`, `white-space:nowrap`)
+- `신청 5분 · 비대면 가능` 텍스트 제거
+- 히어로 배경: 지브리 스타일 SVG 일러스트 직접 제작 → `assets/hero-bg.svg`
+  - 산들바람 언덕 + 아이 3명(산호 원피스 여아, 파란 셔츠 남아, 노란 원피스 여아) + 구름/꽃/반짝이
+  - CSS: `url('hero-bg.svg')` (styles.css 기준 상대경로), 크림 오버레이 55%
+  - **주의**: 로컬에서 경로 수정했으나 브라우저 반영 아직 사용자 확인 필요
+
+#### 개인정보 동의 3개로 변경
+- 기존 단일 checkbox → 3개로 분리:
+  1. 개인정보의 수집 및 이용 (필수) — 오렌지 강조
+  2. 개인정보의 제3자 제공 (필수) — 오렌지 강조
+  3. 개인정보의 마케팅 활용 (선택)
+- 각각 `data-open-privacy="1/2/3"` 버튼 + 별도 `<dialog>` 3개
+- `script.js` 유효성 검사: `privacy1`, `privacy2` 모두 체크 필수, `privacy3` 선택
+- `payload`에 `marketing: form.elements.privacy3?.checked` 추가
+
+#### 학습 성향 카드 내용 수정
+- h3: `유형별 추천 학습법`
+- p: `안정형, 감성형, 관찰형 등 유형에 따른 추천 학습 성향 및 추천 학습법을 알려줍니다.`
+
+#### 아직 안 된 것 / 다음 세션 진입점
+- 히어로 SVG 배경이 브라우저에 제대로 보이는지 최종 확인 필요
+- 나머지 value 카드 내용 수정 요청 있었음 (인격적 성향, 행동·사회성, 흥미 영역 카드도 수정 예정)
+- 전체 변경사항 GitHub에 푸시 아직 안 함
+- 푸시 후 `camiu787.github.io/innerMap-Kids/` 에서 최종 검수 필요
 
 ---
 

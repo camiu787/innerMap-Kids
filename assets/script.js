@@ -2,7 +2,11 @@ const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3Xq6_4T2K3-VC
 
 const form = document.querySelector('#leadForm');
 const alertBox = document.querySelector('#formAlert');
-const privacyDialog = document.querySelector('#privacyDialog');
+const privacyDialogs = {
+  1: document.querySelector('#privacyDialog1'),
+  2: document.querySelector('#privacyDialog2'),
+  3: document.querySelector('#privacyDialog3'),
+};
 
 function normalizePhone(value) {
   return value.replace(/[^0-9]/g, '');
@@ -38,7 +42,8 @@ function validate(formData) {
 
   const nameInput = form.elements.name;
   const phoneInput = form.elements.phone;
-  const privacyInput = form.elements.privacy;
+  const privacy1 = form.elements.privacy1;
+  const privacy2 = form.elements.privacy2;
   const phoneDigits = normalizePhone(fields.phone || '');
 
   if (!fields.name?.trim()) {
@@ -54,9 +59,9 @@ function validate(formData) {
     firstInvalid ||= phoneInput;
   }
 
-  if (!privacyInput.checked) {
-    document.querySelector('#privacyError').textContent = '개인정보 수집 및 이용에 동의해 주세요.';
-    firstInvalid ||= privacyInput;
+  if (!privacy1.checked || !privacy2.checked) {
+    document.querySelector('#privacyError').textContent = '필수 개인정보 항목에 모두 동의해 주세요.';
+    firstInvalid ||= privacy1;
   }
 
   if (firstInvalid) {
@@ -71,6 +76,7 @@ function validate(formData) {
     kidsCount: fields.kidsCount || '',
     kidsAge: fields.kidsAge?.trim() || '',
     privacy: true,
+    marketing: form.elements.privacy3?.checked || false,
     submittedAt: new Date().toISOString(),
   };
 }
@@ -130,15 +136,20 @@ document.querySelectorAll('[data-scroll-to-form]').forEach((link) => {
   });
 });
 
-document.querySelector('[data-open-privacy]')?.addEventListener('click', () => {
-  if (typeof privacyDialog.showModal === 'function') privacyDialog.showModal();
-  else alert('상담 신청을 위해 입력하신 정보는 상담 안내 목적으로만 사용됩니다.');
+document.querySelectorAll('[data-open-privacy]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const id = btn.dataset.openPrivacy;
+    const dialog = privacyDialogs[id];
+    if (dialog && typeof dialog.showModal === 'function') dialog.showModal();
+  });
 });
 
-document.querySelectorAll('[data-close-privacy]').forEach((button) => {
-  button.addEventListener('click', () => privacyDialog.close());
+document.querySelectorAll('[data-close-privacy]').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    Object.values(privacyDialogs).forEach((d) => d?.close());
+  });
 });
 
-privacyDialog?.addEventListener('click', (event) => {
-  if (event.target === privacyDialog) privacyDialog.close();
+Object.values(privacyDialogs).forEach((dialog) => {
+  dialog?.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 });
