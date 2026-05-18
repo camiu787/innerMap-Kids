@@ -15,6 +15,7 @@ function normalizePhone(value) {
 function setAlert(message, type = 'error') {
   alertBox.textContent = message;
   alertBox.className = `form-alert is-visible is-${type}`;
+  alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function clearAlert() {

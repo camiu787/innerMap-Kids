@@ -221,7 +221,7 @@ svg { width: 1em; height: 1em; fill: none; stroke: currentColor; stroke-width: 1
 .apply { padding: 0 24px 96px; }
 .form-shell { max-width: 610px; margin: 0 auto; }
 .lead-form { background: var(--surface); border-radius: var(--radius-section); box-shadow: var(--shadow); padding: 36px; }
-.form-alert { display: none; margin-bottom: 18px; padding: 14px 16px; border-radius: 18px; font-size: 14px; line-height: 1.45; }
+.form-alert { display: none; margin-top: 18px; padding: 14px 16px; border-radius: 18px; font-size: 14px; line-height: 1.45; text-align: center; }
 .form-alert.is-visible { display: block; }
 .form-alert.is-error { background: var(--error-surface); color: var(--clay); }
 .form-alert.is-success { background: var(--success-surface); color: var(--success); }
