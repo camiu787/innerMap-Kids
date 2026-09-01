@@ -637,6 +637,22 @@ h1, h2, h3 {
 .has-page-head .apply .apply__intro > p { color: var(--text-soft); }
 .has-page-head .apply .trust { color: var(--text-soft); }
 
+/* ---------- 한눈에 보기 (요약 스펙) ---------- */
+.summary { background: var(--lavender-soft); }
+.summary .wrap { padding-top: clamp(28px, 4vw, 44px); padding-bottom: clamp(28px, 4vw, 44px); }
+.summary h2 {
+  font-family: var(--sans); font-size: 11.5px; font-weight: 600;
+  letter-spacing: 0.2em; text-transform: uppercase; color: var(--lavender);
+  margin: 0 0 18px;
+}
+.spec {
+  margin: 0; display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px 26px;
+}
+.spec div { display: flex; flex-direction: column; gap: 5px; }
+.spec dt { font-size: 12px; letter-spacing: 0.08em; color: var(--text-mute); }
+.spec dd { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--text); font-weight: 500; }
+
 /* ---------- 스크롤 등장 ---------- */
 .rv {
   opacity: 0; transform: translateY(20px);

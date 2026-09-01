@@ -168,6 +168,29 @@ The lead form and the user-approved copy below must survive any restructuring.
 - `.superpowers/brainstorm/65271-1778680010/content/mastercard-v10.html` — final approved mockup.
 - `memory.md` — session memory and decisions.
 
+## SEO / AEO / GEO
+
+기준 URL은 `https://camiu787.github.io/innerMap-Kids/` 다. **커스텀 도메인으로 옮기면
+canonical·OG·JSON-LD·sitemap·llms.txt의 절대 URL을 전부 교체해야 한다.**
+
+각 페이지 `<head>` 에 들어 있는 것:
+- `canonical`, `robots`(index, follow, max-image-preview:large), `theme-color`
+- Open Graph + Twitter 카드 (`assets/og-image.jpg`, 1200×630)
+- JSON-LD `@graph` — 페이지 타입 + `BreadcrumbList` + 조직 엔티티(`EducationalOrganization`/`LocalBusiness`)
+- 홈은 히어로 이미지 `preload` 추가
+
+사이트 루트 파일:
+- `robots.txt` — 검색 크롤러 + AI 답변엔진(GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Yeti, Daumoa) 허용
+- `sitemap.xml` — 9개 페이지. **페이지를 추가하면 여기도 추가한다.**
+- `llms.txt` — AI 답변엔진용 사실 요약(핵심 사실, 검사 3종 설명, FAQ). 페이지 내용이 바뀌면 같이 갱신한다.
+- `404.html` — GitHub Pages 커스텀 404, `noindex`
+
+AEO 장치: `faq.html` 의 `FAQPage` 구조화 데이터, 검사 3개 페이지의 `.spec` 요약(`<dl>`) 블록,
+각 페이지 헤더의 한 문장 요약 리드.
+
+**금지:** `Review`·`AggregateRating` 구조화 데이터는 실제 동의받은 후기가 확보될 때까지 넣지 않는다
+(없는 평점은 구글 스팸 정책 위반이며 수동 조치 대상이다). 전화번호·가격도 확정 전까지 스키마에 넣지 않는다.
+
 ## Local Development Harness
 
 This is a no-build static site.
