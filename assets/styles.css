@@ -205,6 +205,9 @@ h1, h2, h3 {
 .hero__img {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; transform-origin: 58% 52%; will-change: transform;
+  /* 워크스루 줌 범위. 모바일은 화면이 좁아 크롭이 이미 심하므로 줌을 줄인다. */
+  --zoom-from: 1.75;
+  --zoom-travel: 0.72;
   transform: scale(1.75);
 }
 .hero__scrim {
@@ -588,7 +591,18 @@ h1, h2, h3 {
 @media (max-width: 900px) {
   .about__grid, .apply .wrap { grid-template-columns: 1fr; }
   .site-footer .wrap { grid-template-columns: 1fr 1fr; }
-  .hero { height: 260vh; }
+  .hero { height: 240vh; }
+  .hero__img {
+    --zoom-from: 1.18;
+    --zoom-travel: 0.18;
+    transform: scale(1.18);
+    object-position: 56% 48%;
+    transform-origin: 56% 48%;
+  }
+  .hero__scrim {
+    background: linear-gradient(180deg, rgba(23, 22, 31, 0.5) 0%, rgba(23, 22, 31, 0.3) 32%, rgba(23, 22, 31, 0.86) 100%);
+  }
+  .hero__steps { display: none; }
 }
 
 @media (max-width: 560px) {

@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css?v=20260901a" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260901b" />
 </head>
 <body>
   <a class="skip-link" href="#apply">상담 신청으로 바로가기</a>
@@ -38,7 +38,7 @@
       <li><a href="#faq">자주 묻는 질문</a></li>
     </ul>
     <span class="spacer"></span>
-    <a class="nav__cta" href="#apply" data-scroll-to-form>무료 상담 신청</a>
+    <a class="nav__cta" href="#apply" data-scroll-to-form>상담 신청</a>
     <button class="nav__burger" id="burger" type="button" aria-label="메뉴 열기" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -48,7 +48,9 @@
     <!-- ==================== 히어로 ==================== -->
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="hero__sticky">
-        <img class="hero__img" id="heroImg" src="assets/hero-room.jpg" alt="너바나 상담실 내부" />
+        <img class="hero__img" id="heroImg" src="assets/hero-room.jpg"
+             srcset="assets/hero-room-900.jpg 900w, assets/hero-room.jpg 1800w"
+             sizes="100vw" alt="너바나 상담실 내부" />
         <div class="hero__scrim"></div>
         <div class="hero__copy s1" id="heroCopy">
           <span class="h-brand"><i></i>너바나 NEOBANA</span>
@@ -56,7 +58,7 @@
           <p class="h-lead">손끝에 기록된 타고난 기질과 강점을, 전문가와 마주 앉아 함께 읽습니다.</p>
           <div class="h-actions">
             <a class="button button--primary" href="#apply" data-scroll-to-form>
-              무료 상담 신청
+              상담 신청
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
             </a>
             <a class="button button--ghost-light" href="#dna">검사 알아보기</a>
@@ -91,7 +93,10 @@
               <div><span class="k">대상</span><span class="v">유아 ~ 청소년</span></div>
             </div>
           </div>
-          <div class="about__photo rv"><img src="assets/kids.jpg" alt="함께 웃고 있는 아이들" loading="lazy" /></div>
+          <div class="about__photo rv"><img src="assets/kids.jpg"
+              srcset="assets/kids-900.jpg 900w, assets/kids.jpg 1600w"
+              sizes="(max-width: 900px) 100vw, 45vw"
+              alt="함께 웃고 있는 아이들" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -360,7 +365,7 @@
           <small class="field-error consent-error" id="privacyError"></small>
 
           <button class="button button--submit" type="submit">
-            <span>무료 상담 신청하기</span>
+            <span>상담 신청하기</span>
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7" /></svg>
           </button>
 
@@ -435,7 +440,7 @@
     <button class="button button--dark" type="button" data-close-privacy>확인했습니다</button>
   </dialog>
 
-  <script src="assets/site.js?v=20260901a" defer></script>
-  <script src="assets/script.js?v=20260901a" defer></script>
+  <script src="assets/site.js?v=20260901b" defer></script>
+  <script src="assets/script.js?v=20260901b" defer></script>
 </body>
 </html>

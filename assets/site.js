@@ -12,7 +12,22 @@
   var nav = document.getElementById('nav');
   var steps = stepsBox ? stepsBox.children : [];
 
-  /* ---- 히어로 워크스루 ---- */
+  /* ---- 히어로 워크스루 ----
+     줌 범위는 CSS 변수(--zoom-from / --zoom-travel)에서 읽는다.
+     모바일은 스타일시트가 더 작은 값을 주기 때문에 사진이 과도하게 확대되지 않는다. */
+  var zoomFrom = 1.75;
+  var zoomTravel = 0.72;
+
+  function readZoom() {
+    if (!heroImg) return;
+    var cs = getComputedStyle(heroImg);
+    var f = parseFloat(cs.getPropertyValue('--zoom-from'));
+    var t = parseFloat(cs.getPropertyValue('--zoom-travel'));
+    if (!isNaN(f)) zoomFrom = f;
+    if (!isNaN(t)) zoomTravel = t;
+  }
+  readZoom();
+
   function onScroll() {
     if (!hero) return;
     var rect = hero.getBoundingClientRect();
@@ -20,7 +35,7 @@
     var p = total > 0 ? Math.max(0, Math.min(1, -rect.top / total)) : 0;
 
     heroImg.style.transform =
-      'scale(' + (1.75 - p * 0.72).toFixed(3) + ') translateY(' + (p * -2.2).toFixed(2) + '%)';
+      'scale(' + (zoomFrom - p * zoomTravel).toFixed(3) + ') translateY(' + (p * -2.2).toFixed(2) + '%)';
 
     var s = p < 0.16 ? 1 : p < 0.36 ? 2 : p < 0.58 ? 3 : 4;
     heroCopy.className = 'hero__copy s' + s;
@@ -30,7 +45,10 @@
     nav.classList.toggle('solid', window.scrollY > window.innerHeight * 0.9);
   }
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
+  window.addEventListener('resize', function () {
+    readZoom();
+    onScroll();
+  });
   onScroll();
 
   /* ---- 모바일 메뉴 ---- */
