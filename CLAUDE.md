@@ -100,20 +100,29 @@ Style principles:
 
 ### Approved information architecture (2026-09-01)
 
-Single page + anchor scroll. Nav is sticky, translucent over the hero, opaque after scroll.
+**멀티 페이지 (2026-09-01 개편).** 탭마다 별도 HTML 파일이며 앵커 스크롤은 쓰지 않는다.
+홈은 히어로가 있어 내비가 투명하게 시작하고, 서브 페이지는 `class="nav solid"` 로 처음부터 불투명하다
+(`<body class="has-page-head">` 가 고정 내비 높이만큼 본문을 내린다).
 
 Revised 2026-09-01 after client review of the mockup.
 
-| # | Nav tab | Anchor | Content |
+| # | Nav tab | File | Content |
 |---|---|---|---|
-| 1 | 너바나 소개 | `#about` | 브랜드·슬로건, 동탄 상담실, 대면/비대면 |
-| 2 | 전문가 소개 | `#expert` | 원장 프로필, 상담 철학, 다루는 검사 3종 |
-| 3 | 유전자지문적성검사 | `#dna` | 성향·학습·사회성·흥미 4관점 |
-| 4 | MBTI검사 | `#mbti` | 16유형 + 4지표 |
-| 5 | TCI검사 | `#tci` | 기질 4척도 + 성격 3척도 |
-| 6 | 후기 | `#reviews` | 학부모 후기 — **동의받은 실제 후기만.** 현재는 샘플 자리 표시 상태 |
-| 7 | 자주 묻는 질문 | `#faq` | 연령, 지문 변화, 개인정보 |
-| — | 상담 신청 (버튼) | `#apply` | 항상 노출되는 CTA |
+| — | (홈) | `index.html` | 워크스루 히어로 + 슬로건 + 매니페스토 + 검사 3종 카드(각 페이지 링크) + 하단 CTA |
+| 1 | 너바나 소개 | `about.html` | 브랜드·슬로건, 동탄 상담실, 대면/비대면 |
+| 2 | 전문가 소개 | `expert.html` | 원장 프로필, 상담 철학, 다루는 검사 3종 |
+| 3 | 유전자지문적성검사 | `dna.html` | 성향·학습·사회성·흥미 4관점 |
+| 4 | MBTI검사 | `mbti.html` | 16유형 + 4지표 |
+| 5 | TCI검사 | `tci.html` | 기질 4척도 + 성격 3척도 |
+| 6 | 후기 | `reviews.html` | 학부모 후기 — **동의받은 실제 후기만.** 현재는 샘플 자리 표시 상태 |
+| 7 | 자주 묻는 질문 | `faq.html` | 연령, 지문 변화, 개인정보 |
+| — | 상담 신청 (버튼) | `apply.html` | 리드 폼 + 약관 모달 3개. **`assets/script.js` 는 이 페이지에서만 로드한다** |
+
+### 페이지 공통 요소는 9개 파일에 복제되어 있다
+
+빌드 단계가 없으므로 내비·푸터·`<head>` 는 각 HTML에 그대로 들어 있다.
+**내비 항목이나 푸터를 고칠 때는 9개 파일 전부**(`index`, `about`, `expert`, `dna`, `mbti`, `tci`, `reviews`, `faq`, `apply`)를 함께 수정한다.
+각 서브 페이지는 `.page-head`(제목 밴드) → 본문 섹션(`.sec--sub`) → `.cta-strip`(하단 상담 유도) 순서다.
 
 내비가 7개라 1080px 이하에서는 햄버거 메뉴로 접는다.
 
@@ -146,7 +155,10 @@ The lead form and the user-approved copy below must survive any restructuring.
 
 ## Important Files
 
-- `index.html` — production static landing page.
+- `index.html` — 홈. 워크스루 히어로 + 검사 3종 카드.
+- `about.html` / `expert.html` / `dna.html` / `mbti.html` / `tci.html` / `reviews.html` / `faq.html` — 탭별 페이지.
+- `apply.html` — 상담 신청 폼 페이지 (Apps Script 연동은 이 페이지에서만 동작).
+- `assets/site.js` — 히어로 워크스루·내비·모바일 메뉴·스크롤 등장 (시각 동작 전용).
 - `assets/styles.css` — design system and responsive CSS.
 - `assets/script.js` — form validation and Google Apps Script submission.
 - `apps-script/Code.gs` — Google Apps Script backend template.
@@ -219,7 +231,8 @@ const APPS_SCRIPT_URL = '...';
 
 - Run `git status --short`.
 - Confirm the static files exist.
-- Start `python3 -m http.server 4173` and open the page if browser tooling is available.
+- Start `python3 -m http.server 4173` and open the pages if browser tooling is available.
+- 9개 페이지 전부 열어 내비·푸터 링크가 깨지지 않았는지 확인한다.
 - Test empty form validation.
 - Test valid demo-mode form submission.
 - Confirm the page is responsive at desktop and mobile widths.

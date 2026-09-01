@@ -168,6 +168,7 @@ h1, h2, h3 {
 }
 .nav__links a:hover,
 .nav__links a.active { border-color: var(--apricot); opacity: 1; }
+.nav.solid .nav__links a.active { color: var(--navy); font-weight: 600; }
 
 .nav .spacer { flex: 1; }
 
@@ -565,6 +566,76 @@ h1, h2, h3 {
   padding: 20px var(--pad); display: flex; justify-content: space-between; gap: 12px;
   font-size: 12px; color: rgba(255, 255, 255, 0.42); grid-template-columns: none;
 }
+
+/* ---------- 서브 페이지 헤더 ---------- */
+/* 히어로가 없는 페이지는 내비가 처음부터 불투명하므로 본문을 그만큼 내린다. */
+.has-page-head { padding-top: 72px; }
+
+.page-head {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+}
+.page-head .wrap {
+  padding-top: clamp(44px, 6vw, 84px);
+  padding-bottom: clamp(36px, 5vw, 64px);
+}
+.page-head h1 {
+  font-size: clamp(28px, 4vw, 46px);
+  line-height: 1.34;
+  margin: 0;
+  text-wrap: balance;
+}
+.page-head p {
+  margin: 18px 0 0;
+  color: var(--text-soft);
+  font-size: 16px;
+  line-height: 1.9;
+  max-width: 34em;
+}
+
+/* 페이지 헤더가 제목을 이미 말했으므로 첫 섹션의 위 여백을 줄인다 */
+.sec--sub { padding-top: clamp(40px, 6vw, 72px); }
+
+/* ---------- 링크 카드 (홈의 검사 프로그램) ---------- */
+.card--link { display: block; }
+.card--link .more {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--lavender);
+}
+.card--link:hover .more { color: var(--navy); }
+
+/* ---------- 하단 상담 유도 ---------- */
+.cta-strip {
+  background: var(--navy);
+  color: #fff;
+}
+.cta-strip .wrap {
+  padding-top: clamp(56px, 7vw, 88px);
+  padding-bottom: clamp(56px, 7vw, 88px);
+  text-align: center;
+}
+.cta-strip h2 {
+  font-size: clamp(23px, 3vw, 34px);
+  line-height: 1.48;
+  margin: 0 0 14px;
+  text-wrap: balance;
+}
+.cta-strip p {
+  margin: 0 auto 28px;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 30em;
+  line-height: 1.9;
+}
+.cta-strip .button { margin: 0 auto; }
+
+/* 신청 페이지에서는 신청 섹션이 본문이므로 라운드 배경을 걷어낸다 */
+.has-page-head .apply { background: var(--ivory); color: var(--text); }
+.has-page-head .apply h2 { color: var(--text); }
+.has-page-head .apply .apply__intro > p { color: var(--text-soft); }
+.has-page-head .apply .trust { color: var(--text-soft); }
 
 /* ---------- 스크롤 등장 ---------- */
 .rv {
