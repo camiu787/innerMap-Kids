@@ -361,6 +361,7 @@ h1, h2, h3 {
 .manifesto .eyebrow::after { background: rgba(255, 255, 255, 0.22); }
 .manifesto h2 { font-size: clamp(23px, 3.2vw, 36px); line-height: 1.5; max-width: 20em; margin: 0 auto 26px; }
 .manifesto p { color: rgba(255, 255, 255, 0.78); max-width: 34em; margin: 0 auto; line-height: 1.95; }
+.manifesto p + p { margin-top: 20px; }
 .manifesto hr { width: 46px; border: 0; border-top: 1px solid rgba(255, 255, 255, 0.3); margin: 26px auto; }
 
 /* ---------- 검사 카드 ---------- */
