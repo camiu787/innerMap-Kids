@@ -655,6 +655,64 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .spec dt { font-size: 12px; letter-spacing: 0.08em; color: var(--text-mute); }
 .spec dd { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--text); font-weight: 500; }
 
+/* ---------- 본문 산문 (검사 소개) ---------- */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.prose { max-width: 40em; }
+.prose p { color: var(--text-soft); font-size: 16.5px; line-height: 2; margin: 0 0 22px; }
+.prose__asks {
+  list-style: none; margin: 0 0 26px; padding: 4px 0 4px 22px;
+  border-left: 2px solid var(--lavender);
+  display: flex; flex-direction: column; gap: 8px;
+}
+.prose__asks li {
+  font-family: var(--serif); font-size: clamp(16px, 1.7vw, 19px);
+  line-height: 1.7; color: var(--text);
+}
+.prose__closing {
+  font-family: var(--serif); font-weight: 700;
+  font-size: clamp(19px, 2.2vw, 26px) !important;
+  line-height: 1.6 !important; color: var(--text) !important;
+  margin: 34px 0 0 !important; letter-spacing: -0.015em;
+}
+
+/* ---------- 검사 안내 표 ---------- */
+.table-wrap { overflow-x: auto; }
+.info-table {
+  width: 100%; border-collapse: collapse; min-width: 420px;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md);
+  overflow: hidden;
+}
+.info-table thead th {
+  background: var(--lavender-soft); color: var(--lavender);
+  font-size: 12px; letter-spacing: 0.14em; font-weight: 600;
+  text-align: left; padding: 14px 22px;
+}
+.info-table tbody th {
+  width: 34%; text-align: left; vertical-align: top;
+  padding: 18px 22px; font-size: 14.5px; font-weight: 600; color: var(--text);
+  border-top: 1px solid var(--line);
+}
+.info-table tbody td {
+  padding: 18px 22px; font-size: 15px; line-height: 1.7;
+  color: var(--text-soft); border-top: 1px solid var(--line);
+}
+.info-table tbody tr.is-price th,
+.info-table tbody tr.is-price td { background: var(--apricot-soft); color: var(--text); }
+.info-table tbody tr.is-price td {
+  font-family: var(--serif); font-weight: 700; font-size: 19px;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 560px) {
+  .info-table { min-width: 0; }
+  .info-table tbody th, .info-table tbody td { padding: 14px 16px; }
+  .info-table tbody th { width: 38%; font-size: 13.5px; }
+  .info-table tbody td { font-size: 14px; }
+}
+
 /* ---------- 스크롤 등장 ---------- */
 .rv {
   opacity: 0; transform: translateY(20px);
