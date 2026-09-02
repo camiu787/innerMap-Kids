@@ -24,6 +24,7 @@ function doPost(e) {
       body.region || '',
       body.kidsCount || '',
       body.kidsAge || '',
+      body.tests || '',
       '',
     ]);
 
@@ -59,10 +60,23 @@ function getSheet_() {
   let sheet = ss.getSheetByName(SHEET_NAME);
   if (!sheet) sheet = ss.insertSheet(SHEET_NAME);
 
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(['제출시각', '이름', '전화', '지역', '자녀수', '자녀나이', '처리상태']);
-  }
+  ensureHeader_(sheet);
   return sheet;
+}
+
+const HEADER = ['제출시각', '이름', '전화', '지역', '자녀수', '자녀나이', '관심검사', '처리상태'];
+
+/** 헤더가 없거나 예전 형식이면 1행만 갱신한다. 기존 데이터 행은 건드리지 않는다. */
+function ensureHeader_(sheet) {
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(HEADER);
+    return;
+  }
+  const current = sheet.getRange(1, 1, 1, HEADER.length).getValues()[0];
+  const same = HEADER.every((label, i) => String(current[i] || '') === label);
+  if (!same) {
+    sheet.getRange(1, 1, 1, HEADER.length).setValues([HEADER]);
+  }
 }
 
 function sendNotification_(body) {
@@ -77,6 +91,7 @@ function sendNotification_(body) {
     `거주 지역: ${body.region || ''}`,
     `자녀 수: ${body.kidsCount || ''}`,
     `자녀 나이: ${body.kidsAge || ''}`,
+    `관심 검사: ${body.tests || ''}`,
     `제출 시각: ${body.submittedAt || new Date().toISOString()}`,
   ].join('\n');
 

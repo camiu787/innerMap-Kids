@@ -56,7 +56,13 @@ The visual direction and section structure are being re-established. Until that 
 - Region
 - Number of children
 - Child age or ages
+- **관심 있는 검사** (체크박스 복수 선택: 유전자지문적성검사 / MBTI검사 / TCI검사 / 상담 후 결정) — 2026-09-02 추가, 최소 1개 필수
 - Privacy consent checkbox
+
+> ⚠️ **Apps Script 재배포 필요.** 관심 검사 필드가 추가되면서 `apps-script/Code.gs` 의
+> 시트 열(`관심검사`)과 알림 메일 항목이 늘었다. **레포의 Code.gs 를 Apps Script 편집기에
+> 다시 붙여넣고 새 버전으로 배포해야** 시트에 기록된다. 배포 전까지 이 값은 유실된다.
+> 헤더 행은 `ensureHeader_()` 가 자동으로 맞춘다 (1행만 수정, 데이터 행은 건드리지 않음).
 
 ## Design System
 
@@ -84,7 +90,9 @@ Key tokens (excerpt — see `DESIGN.md` for full list):
 - Semantic: `--success`, `--error`, `--warning`, `--info` (each with matching `*-surface`)
 - Radii: `--radius-md` (20) / `--radius-card` (32) / `--radius-section` (40) / `--radius-pill` (9999). Skip 8–16px.
 - Spacing: 8px base (`--space-2` … `--space-32`)
-- Typography: **Pretendard Variable** (single family for Hangul + Latin), `--text-*` and `--lh-*` tokens
+- Typography: 제목 **Jua**(배민 주아, `--display`) + 본문 **Pretendard Variable**(`--sans`, weight 500 기본).
+  Jua 는 웨이트가 400 하나뿐이므로 `font-weight: 700` 을 주지 않는다 (합성 볼드로 뭉갠다).
+  2026-09-02 고객 요청으로 얇은 명조(Gowun Batang) → 둥근 굵은 서체로 교체, 본문 대비도 상향.
 - Motion: `var(--duration-base) var(--ease-out)` — never inline `.18s ease`
 
 Style principles:
@@ -209,6 +217,8 @@ canonical·OG·JSON-LD·sitemap·llms.txt의 절대 URL을 전부 교체해야 �
 - `sitemap.xml` — 9개 페이지. **페이지를 추가하면 여기도 추가한다.**
 - `llms.txt` — AI 답변엔진용 사실 요약(핵심 사실, 검사 3종 설명, FAQ). 페이지 내용이 바뀌면 같이 갱신한다.
 - `404.html` — GitHub Pages 커스텀 404, `noindex`
+
+페이지별 귀여운 인라인 SVG 일러스트가 `.page-head__art` 에 들어 있다 (외부 이미지 아님, 브랜드 색만 사용).
 
 AEO 장치: `faq.html` 의 `FAQPage` 구조화 데이터, 검사 3개 페이지의 `.spec` 요약(`<dl>`) 블록,
 각 페이지 헤더의 한 문장 요약 리드.

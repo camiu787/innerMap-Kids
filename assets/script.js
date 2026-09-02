@@ -33,7 +33,10 @@ function setFieldError(field, message) {
 function clearErrors() {
   form.querySelectorAll('.field').forEach((field) => field.classList.remove('is-invalid'));
   form.querySelectorAll('.field-error').forEach((error) => { error.textContent = ''; });
-  document.querySelector('#privacyError').textContent = '';
+  const privacyError = document.querySelector('#privacyError');
+  if (privacyError) privacyError.textContent = '';
+  const testsError = document.querySelector('#testsError');
+  if (testsError) testsError.textContent = '';
 }
 
 function validate(formData) {
@@ -60,6 +63,13 @@ function validate(formData) {
     firstInvalid ||= phoneInput;
   }
 
+  const tests = formData.getAll('tests');
+  if (!tests.length) {
+    const testsError = document.querySelector('#testsError');
+    if (testsError) testsError.textContent = '관심 있는 검사를 하나 이상 선택해 주세요.';
+    firstInvalid ||= form.querySelector('input[name="tests"]');
+  }
+
   if (!privacy1.checked || !privacy2.checked) {
     document.querySelector('#privacyError').textContent = '필수 개인정보 항목에 모두 동의해 주세요.';
     firstInvalid ||= privacy1;
@@ -76,6 +86,7 @@ function validate(formData) {
     region: fields.region?.trim() || '',
     kidsCount: fields.kidsCount || '',
     kidsAge: fields.kidsAge?.trim() || '',
+    tests: tests.join(', '),
     privacy: true,
     marketing: form.elements.privacy3?.checked || false,
     submittedAt: new Date().toISOString(),

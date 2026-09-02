@@ -18,8 +18,8 @@
 
   /* 텍스트 & 라인 */
   --text: #2e2b57;
-  --text-soft: #6e6880;
-  --text-mute: #918ba0;
+  --text-soft: #565073;   /* 대비 상향 (구 #6e6880) */
+  --text-mute: #7a7490;   /* 대비 상향 (구 #918ba0) */
   --line: #e5dfd6;
 
   /* 시맨틱 */
@@ -29,7 +29,8 @@
   --error-surface: #fdf1ed;
 
   /* 타이포 */
-  --serif: 'Gowun Batang', 'Nanum Myeongjo', 'Apple SD Gothic Neo', serif;
+  /* 제목: 배민 주아 — 둥글고 두꺼워 시인성이 높다 (웨이트 400 하나뿐이므로 굵게 지정하지 않는다) */
+  --display: 'Jua', 'Apple SD Gothic Neo', system-ui, sans-serif;
   --sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont,
     'Apple SD Gothic Neo', 'Noto Sans KR', system-ui, sans-serif;
 
@@ -62,9 +63,9 @@ body {
   background: var(--ivory);
   color: var(--text);
   font-family: var(--sans);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.7;
+  font-weight: 500;        /* 얇아 보이던 문제 해소 */
+  font-size: 16.5px;
+  line-height: 1.75;
   word-break: keep-all;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -88,14 +89,14 @@ button { font-family: inherit; }
 }
 
 h1, h2, h3 {
-  font-family: var(--serif);
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-family: var(--display);
+  font-weight: 400;        /* Jua 는 단일 웨이트. 700 지정 시 합성 볼드로 뭉갠다 */
+  letter-spacing: -0.01em;
   margin: 0;
 }
 
 .eyebrow {
-  font-size: 11.5px;
+  font-size: 12px;
   letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--lavender);
@@ -111,7 +112,7 @@ h1, h2, h3 {
   margin-bottom: 16px;
   text-wrap: balance;
 }
-.sec__head p { color: var(--text-soft); font-size: 16px; line-height: 1.9; margin: 0; }
+.sec__head p { color: var(--text-soft); font-size: 16.5px; line-height: 1.9; margin: 0; }
 
 .skip-link {
   position: absolute; left: -9999px; top: 0; z-index: 100;
@@ -122,7 +123,7 @@ h1, h2, h3 {
 /* ---------- 로고 ---------- */
 .logo { display: flex; align-items: center; gap: 11px; }
 .logo svg { width: 34px; height: 34px; flex: none; }
-.logo b { font-family: var(--serif); font-size: 20px; font-weight: 700; letter-spacing: -0.01em; }
+.logo b { font-family: var(--display); font-size: 21px; font-weight: 400; letter-spacing: 0; }
 .logo small { font-size: 10px; letter-spacing: 0.22em; color: var(--text-mute); display: block; margin-top: -3px; }
 
 /* ---------- 내비 ---------- */
@@ -153,7 +154,8 @@ h1, h2, h3 {
   list-style: none;
   margin: 0;
   padding: 0;
-  font-size: 14.5px;
+  font-size: 15px;
+  font-weight: 600;
 }
 .nav__links a {
   padding: 6px 2px;
@@ -232,7 +234,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .h-brand i { width: 26px; height: 12px; border-radius: var(--r-pill); background: linear-gradient(90deg, var(--lavender), var(--apricot)); }
 
 .h-title {
-  font-family: var(--serif); font-weight: 700; color: #fff;
+  font-family: var(--display); font-weight: 400; color: #fff;
   font-size: clamp(22px, 3.1vw, 42px); line-height: 1.38; margin: 0 0 20px; max-width: 17em;
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
 }
@@ -304,7 +306,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .about__photo img { aspect-ratio: 4 / 3; object-fit: cover; width: 100%; }
 .about p { color: var(--text-soft); line-height: 1.95; margin: 0 0 18px; }
 .about .quote {
-  font-family: var(--serif); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.7;
+  font-family: var(--display); font-size: clamp(18px, 2.1vw, 24px); line-height: 1.7;
   color: var(--text); margin: 0 0 24px; padding-left: 20px; border-left: 2px solid var(--apricot);
 }
 .about__head { font-size: clamp(25px, 3.4vw, 38px); line-height: 1.4; margin-bottom: 22px; }
@@ -314,7 +316,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 .about__meta div { display: flex; flex-direction: column; gap: 3px; }
 .about__meta .k { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
-.about__meta .v { font-family: var(--serif); font-weight: 700; font-size: 17px; }
+.about__meta .v { font-family: var(--display); font-weight: 400; font-size: 17px; }
 
 /* ---------- 전문가 소개 ---------- */
 .expert { background: var(--paper); }
@@ -327,7 +329,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   width: 108px; height: 108px; border-radius: var(--r-pill); margin: 0 auto 20px;
   background: linear-gradient(140deg, var(--lavender-soft), var(--apricot-soft));
   display: grid; place-items: center; color: var(--lavender);
-  font-family: var(--serif); font-size: 12px; letter-spacing: 0.1em; line-height: 1.5;
+  font-family: var(--display); font-size: 12px; letter-spacing: 0.1em; line-height: 1.5;
 }
 .expert__card h3 { font-size: 20px; margin-bottom: 6px; }
 .expert__card .role { font-size: 13.5px; color: var(--apricot); margin: 0 0 18px; letter-spacing: 0.04em; }
@@ -337,13 +339,13 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 .expert__body p { color: var(--text-soft); line-height: 1.95; margin: 0 0 18px; }
 .expert__body .quote {
-  font-family: var(--serif); font-size: clamp(18px, 2.1vw, 23px); line-height: 1.72;
+  font-family: var(--display); font-size: clamp(18px, 2.1vw, 23px); line-height: 1.72;
   color: var(--text); margin: 0 0 24px; padding-left: 20px; border-left: 2px solid var(--lavender);
 }
 .creds { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 26px; }
 .creds div { background: var(--ivory); border-radius: var(--r-md); padding: 18px 20px; }
 .creds .k { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin: 0 0 6px; }
-.creds .v { font-family: var(--serif); font-weight: 700; font-size: 17px; margin: 0; line-height: 1.45; }
+.creds .v { font-family: var(--display); font-weight: 400; font-size: 17px; margin: 0; line-height: 1.45; }
 
 /* ---------- 매니페스토 ---------- */
 .manifesto {
@@ -387,13 +389,13 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   color: var(--apricot); margin: 0 0 8px; font-weight: 600;
 }
 .card h3 { font-size: 18px; line-height: 1.5; margin-bottom: 10px; }
-.card p { font-size: 14.5px; line-height: 1.8; color: var(--text-soft); margin: 0; }
+.card p { font-size: 15px; line-height: 1.8; color: var(--text-soft); margin: 0; }
 
 /* ---------- MBTI ---------- */
 .mbti__grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; }
 .mbti__grid span {
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-sm);
-  padding: 15px 8px; text-align: center; font-size: 14px; font-weight: 500; letter-spacing: 0.06em;
+  padding: 15px 8px; text-align: center; font-size: 15px; font-weight: 700; letter-spacing: 0.06em;
   color: var(--text-soft);
   transition: background var(--duration-base) var(--ease), color var(--duration-base) var(--ease),
     border-color var(--duration-base) var(--ease);
@@ -403,10 +405,10 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .axis { background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-md); padding: 20px 22px; }
 .axis .pair {
   display: flex; align-items: center; gap: 10px;
-  font-family: var(--serif); font-weight: 700; font-size: 16px; margin: 0 0 8px;
+  font-family: var(--display); font-weight: 400; font-size: 16px; margin: 0 0 8px;
 }
 .axis .pair i { flex: 1; height: 1px; background: var(--line); }
-.axis p { margin: 0; font-size: 13.5px; line-height: 1.75; color: var(--text-soft); }
+.axis p { margin: 0; font-size: 14px; line-height: 1.75; color: var(--text-soft); }
 
 /* ---------- TCI ---------- */
 .tci__cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 36px); }
@@ -420,8 +422,8 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   border-left: 3px solid var(--lavender);
 }
 .tci__col.character li { border-left-color: var(--apricot); }
-.tci__col li b { display: block; font-family: var(--serif); font-weight: 700; font-size: 15.5px; margin-bottom: 4px; }
-.tci__col li span { font-size: 13.5px; color: var(--text-soft); line-height: 1.7; }
+.tci__col li b { display: block; font-family: var(--display); font-weight: 400; font-size: 15.5px; margin-bottom: 4px; }
+.tci__col li span { font-size: 14px; color: var(--text-soft); line-height: 1.7; }
 
 /* ---------- 후기 ---------- */
 .reviews__banner {
@@ -442,7 +444,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   padding: 5px 10px; border-radius: var(--r-pill); font-weight: 700;
 }
 .review .stars { color: var(--apricot); font-size: 14px; letter-spacing: 0.16em; margin: 0 0 14px; }
-.review p { margin: 0 0 18px; font-size: 14.5px; line-height: 1.85; color: var(--text-soft); }
+.review p { margin: 0 0 18px; font-size: 15px; line-height: 1.85; color: var(--text-soft); }
 .review .who {
   display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--text-mute);
   padding-top: 16px; border-top: 1px solid var(--line); margin: 0;
@@ -464,7 +466,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   transition: transform 0.25s var(--ease);
 }
 .faq details[open] summary::after { transform: translateY(-20%) rotate(-135deg); }
-.faq p { margin: 0 0 24px; color: var(--text-soft); font-size: 15px; line-height: 1.9; padding-right: 40px; }
+.faq p { margin: 0 0 24px; color: var(--text-soft); font-size: 15.5px; line-height: 1.9; padding-right: 40px; }
 
 /* ---------- 신청 ---------- */
 .apply { background: var(--navy); color: #fff; }
@@ -526,6 +528,20 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .form-alert.is-success { background: var(--success-surface); color: var(--success); }
 .form-alert.is-error { background: var(--error-surface); color: var(--error); }
 .form-note { margin: 14px 0 0; font-size: 12.5px; color: var(--text-mute); text-align: center; }
+
+/* ---------- 검사 항목 선택 ---------- */
+.field--tests { margin-bottom: 6px; }
+.checks { display: grid; gap: 8px; }
+.check {
+  display: flex; align-items: center; gap: 11px;
+  padding: 13px 16px; border: 1px solid var(--line); border-radius: var(--r-sm);
+  font-size: 15px; color: var(--text); cursor: pointer;
+  transition: border-color var(--duration-base) var(--ease), background var(--duration-base) var(--ease);
+}
+.check:hover { border-color: var(--lavender); background: var(--lavender-soft); }
+.check input { width: 18px; height: 18px; accent-color: var(--lavender); flex: none; margin: 0; }
+.check:has(input:checked) { border-color: var(--lavender); background: var(--lavender-soft); font-weight: 700; }
+.field--tests.is-invalid .check { border-color: var(--error); }
 
 /* ---------- 약관 모달 ---------- */
 .privacy-dialog {
@@ -668,11 +684,11 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   display: flex; flex-direction: column; gap: 8px;
 }
 .prose__asks li {
-  font-family: var(--serif); font-size: clamp(16px, 1.7vw, 19px);
+  font-family: var(--display); font-size: clamp(16px, 1.7vw, 19px);
   line-height: 1.7; color: var(--text);
 }
 .prose__closing {
-  font-family: var(--serif); font-weight: 700;
+  font-family: var(--display); font-weight: 400;
   font-size: clamp(19px, 2.2vw, 26px) !important;
   line-height: 1.6 !important; color: var(--text) !important;
   margin: 34px 0 0 !important; letter-spacing: -0.015em;
@@ -702,7 +718,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .info-table tbody tr.is-price th,
 .info-table tbody tr.is-price td { background: var(--apricot-soft); color: var(--text); }
 .info-table tbody tr.is-price td {
-  font-family: var(--serif); font-weight: 700; font-size: 19px;
+  font-family: var(--display); font-weight: 400; font-size: 19px;
   font-variant-numeric: tabular-nums;
 }
 
@@ -711,6 +727,33 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   .info-table tbody th, .info-table tbody td { padding: 14px 16px; }
   .info-table tbody th { width: 38%; font-size: 13.5px; }
   .info-table tbody td { font-size: 14px; }
+}
+
+/* ---------- 페이지 헤더 일러스트 ---------- */
+.page-head .wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(20px, 4vw, 56px);
+  align-items: center;
+}
+.page-head__art { width: clamp(150px, 21vw, 230px); justify-self: end; }
+.page-head__art svg { width: 100%; height: auto; display: block; animation: bob 5s var(--ease) infinite; }
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-9px); }
+}
+
+/* ---------- 홈 슬로건 장식 ---------- */
+.slogan__art { max-width: 260px; margin: 0 auto 22px; }
+.slogan__art svg { width: 100%; height: auto; display: block; animation: bob 5s var(--ease) infinite; }
+
+@media (max-width: 700px) {
+  .page-head .wrap { grid-template-columns: 1fr; }
+  .page-head__art { width: 148px; justify-self: start; margin-top: 6px; }
+  .slogan__art { max-width: 200px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .page-head__art svg, .slogan__art svg { animation: none; }
 }
 
 /* ---------- 스크롤 등장 ---------- */
