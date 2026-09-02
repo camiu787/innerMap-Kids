@@ -37,7 +37,8 @@
     heroImg.style.transform =
       'scale(' + (zoomFrom - p * zoomTravel).toFixed(3) + ') translateY(' + (p * -2.2).toFixed(2) + '%)';
 
-    var s = p < 0.16 ? 1 : p < 0.36 ? 2 : p < 0.58 ? 3 : 4;
+    // 1단계에서 브랜드와 헤드라인이 함께 나온다 (브랜드만 먼저 뜨면 뜬금없어 보임)
+    var s = p < 0.22 ? 1 : p < 0.5 ? 2 : 3;
     heroCopy.className = 'hero__copy s' + s;
     for (var i = 0; i < steps.length; i++) steps[i].className = i < s ? 'on' : '';
     if (cue) cue.style.opacity = p > 0.06 ? 0 : 1;

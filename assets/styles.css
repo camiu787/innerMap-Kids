@@ -224,10 +224,9 @@ h1, h2, h3 {
   opacity: 0; transform: translateY(22px);
   transition: opacity var(--duration-slow) var(--ease), transform var(--duration-slow) var(--ease);
 }
-.hero__copy.s1 .h-brand,
-.hero__copy.s2 .h-brand, .hero__copy.s2 .h-title,
-.hero__copy.s3 .h-brand, .hero__copy.s3 .h-title, .hero__copy.s3 .h-lead,
-.hero__copy.s4 > * { opacity: 1; transform: none; }
+.hero__copy.s1 .h-brand, .hero__copy.s1 .h-title,
+.hero__copy.s2 .h-brand, .hero__copy.s2 .h-title, .hero__copy.s2 .h-lead,
+.hero__copy.s3 > * { opacity: 1; transform: none; }
 
 .h-brand {
   display: flex; align-items: center; gap: 10px;
@@ -241,8 +240,9 @@ h1, h2, h3 {
   text-shadow: 0 2px 30px rgba(0, 0, 0, 0.4);
 }
 .h-lead {
-  color: rgba(255, 255, 255, 0.85); font-size: clamp(14.5px, 1.2vw, 17px);
-  line-height: 1.85; margin: 0 0 34px; max-width: 25em;
+  color: rgba(255, 255, 255, 0.9); font-size: clamp(18px, 1.9vw, 24px);
+  line-height: 1.7; margin: 0 0 34px; max-width: 22em;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
 }
 .h-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
@@ -357,7 +357,13 @@ h1, h2, h3 {
 .manifesto .wrap {
   padding-top: clamp(56px, 8vw, 104px); padding-bottom: clamp(56px, 8vw, 104px); text-align: center;
 }
-.manifesto .eyebrow { justify-content: center; color: var(--apricot); }
+.manifesto .eyebrow {
+  justify-content: center;
+  color: var(--apricot);
+  font-size: 16.5px;        /* 기본 eyebrow 11.5px + 5pt */
+  letter-spacing: 0.14em;   /* 커진 글자에 맞춰 자간 축소 */
+  margin-bottom: 22px;
+}
 .manifesto .eyebrow::after { background: rgba(255, 255, 255, 0.22); }
 .manifesto h2 { font-size: clamp(23px, 3.2vw, 36px); line-height: 1.5; max-width: 20em; margin: 0 auto 26px; }
 .manifesto p { color: rgba(255, 255, 255, 0.78); max-width: 34em; margin: 0 auto; line-height: 1.95; }
