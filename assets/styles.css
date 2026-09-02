@@ -101,11 +101,7 @@ h1, h2, h3 {
   color: var(--lavender);
   font-weight: 600;
   margin: 0 0 16px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
 }
-.eyebrow::after { content: ""; height: 1px; width: 44px; background: var(--line); }
 
 .sec { padding: clamp(64px, 9vw, 128px) 0; }
 .sec__head { max-width: 30em; margin-bottom: clamp(32px, 5vw, 56px); }
@@ -359,15 +355,12 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   padding-top: clamp(56px, 8vw, 104px); padding-bottom: clamp(56px, 8vw, 104px); text-align: center;
 }
 .manifesto .eyebrow {
-  justify-content: center;
-  display: block;           /* 대시를 없애고 순수 중앙 정렬 */
   text-align: center;
   color: var(--apricot);
   font-size: 16.5px;        /* 기본 eyebrow 11.5px + 5pt */
   letter-spacing: 0.14em;   /* 커진 글자에 맞춰 자간 축소 */
   margin-bottom: 22px;
 }
-.manifesto .eyebrow::after { content: none; }
 .manifesto h2 { font-size: clamp(23px, 3.2vw, 36px); line-height: 1.5; max-width: 20em; margin: 0 auto 26px; }
 .manifesto p { color: rgba(255, 255, 255, 0.78); max-width: 34em; margin: 0 auto; line-height: 1.95; }
 .manifesto p + p { margin-top: 20px; }
@@ -477,7 +470,6 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .apply { background: var(--navy); color: #fff; }
 .apply .wrap { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
 .apply .eyebrow { color: var(--apricot); }
-.apply .eyebrow::after { background: rgba(255, 255, 255, 0.24); }
 .apply h2 { font-size: clamp(24px, 3.2vw, 36px); line-height: 1.42; margin-bottom: 16px; }
 .apply__intro > p { color: rgba(255, 255, 255, 0.76); line-height: 1.9; margin: 0 0 22px; }
 .apply .trust {
