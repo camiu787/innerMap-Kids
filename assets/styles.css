@@ -183,6 +183,16 @@ h1, h2, h3 {
 }
 .nav__cta:hover { transform: translateY(-2px); box-shadow: 0 12px 26px rgba(240, 169, 124, 0.42); }
 
+.nav__tel {
+  display: none; align-items: center; gap: 7px;
+  font-size: 14.5px; font-weight: 700; letter-spacing: 0.01em;
+  padding: 10px 14px; border-radius: var(--r-pill);
+  transition: background var(--duration-base) var(--ease);
+}
+.nav__tel svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.nav__tel:hover { background: rgba(139, 132, 198, 0.14); }
+@media (min-width: 1180px) { .nav__tel { display: inline-flex; } }
+
 .nav__burger {
   display: none;
   width: 40px; height: 40px;
@@ -526,6 +536,27 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .apply .trust li { display: flex; align-items: center; gap: 10px; }
 .apply .trust li::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--apricot); flex: none; }
 
+/* ---------- 신청 페이지 전화 안내 ---------- */
+.apply__phone {
+  display: inline-flex; align-items: center; gap: 13px;
+  margin: 0 0 22px; padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: var(--r-md); color: #fff;
+  transition: background var(--duration-base) var(--ease), transform var(--duration-base) var(--ease);
+}
+.apply__phone:hover { background: rgba(255, 255, 255, 0.18); transform: translateY(-2px); }
+.apply__phone svg { width: 22px; height: 22px; flex: none; fill: none; stroke: var(--apricot); stroke-width: 1.7; }
+.apply__phone span { font-size: 13.5px; line-height: 1.5; color: rgba(255, 255, 255, 0.78); }
+.apply__phone b {
+  display: block; font-family: var(--display); font-weight: 400;
+  font-size: 19px; color: #fff; letter-spacing: 0.01em;
+}
+.has-page-head .apply__phone {
+  background: var(--lavender-soft); border-color: #ded8f0; color: var(--text);
+}
+.has-page-head .apply__phone span { color: var(--text-soft); }
+.has-page-head .apply__phone b { color: var(--text); }
+
 /* ---------- 폼 ---------- */
 .lead-form {
   background: var(--paper); border-radius: var(--r-lg);
@@ -617,6 +648,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 .site-footer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px; }
 .site-footer a:hover { color: #fff; }
+.footer-tel { font-family: var(--display); font-size: 18px; color: #fff; letter-spacing: 0.01em; }
 .site-footer .biz { margin: 18px 0 0; line-height: 1.85; font-size: 12.5px; color: rgba(255, 255, 255, 0.5); }
 .site-footer .b2b {
   display: inline-flex; align-items: center; gap: 8px; margin-top: 12px;
@@ -914,7 +946,17 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   .nav.open .nav__links { display: flex; }
   .nav.open { background: rgba(250, 247, 242, 0.98); backdrop-filter: blur(14px); color: var(--text); }
   .nav__links a { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); color: var(--text); opacity: 1; }
-  .nav__burger { display: block; }
+  .nav__tel {
+  display: none; align-items: center; gap: 7px;
+  font-size: 14.5px; font-weight: 700; letter-spacing: 0.01em;
+  padding: 10px 14px; border-radius: var(--r-pill);
+  transition: background var(--duration-base) var(--ease);
+}
+.nav__tel svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+.nav__tel:hover { background: rgba(139, 132, 198, 0.14); }
+@media (min-width: 1180px) { .nav__tel { display: inline-flex; } }
+
+.nav__burger { display: block; }
   .expert__grid, .tci__cols { grid-template-columns: 1fr; }
 }
 
