@@ -63,16 +63,33 @@
       .join('');
   }
 
+  /* 백엔드(Apps Script)가 후기 기능을 지원하는 버전인지 먼저 확인한다.
+     구버전이면 폼을 잠근다 — 열어두면 방문자가 쓴 후기가 저장되지 않는데
+     성공 메시지만 보이는 상태가 된다. 재배포하면 자동으로 다시 열린다. */
+  function lockForm(message) {
+    if (!form) return;
+    form.querySelectorAll('input, textarea, button').forEach((el) => { el.disabled = true; });
+    const notice = document.createElement('p');
+    notice.className = 'form-notice';
+    notice.textContent = message;
+    form.prepend(notice);
+  }
+
   function loadReviews() {
     if (!list) return;
     fetch(APPS_SCRIPT_URL + '?type=reviews', { method: 'GET' })
       .then((res) => res.json())
       .then((data) => {
-        if (!data || !Array.isArray(data.reviews)) throw new Error('bad payload');
+        if (!data || !Array.isArray(data.reviews)) {
+          // 후기 기능이 아직 배포되지 않은 상태
+          list.innerHTML =
+            '<p class="reviews__state">후기 기능을 준비하고 있습니다. 곧 열립니다.</p>';
+          lockForm('후기 작성 기능을 준비하고 있습니다. 준비가 끝나면 바로 열립니다. 급하신 문의는 010-9542-2406 으로 연락 주세요.');
+          return;
+        }
         renderReviews(data.reviews);
       })
       .catch(() => {
-        // Apps Script 미배포·차단 시에도 폼은 계속 쓸 수 있어야 한다.
         list.innerHTML =
           '<p class="reviews__state">후기를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
       });

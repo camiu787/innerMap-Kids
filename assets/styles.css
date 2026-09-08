@@ -258,7 +258,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .hero__scrollcue {
   position: absolute; z-index: 4; left: 50%; bottom: 26px; transform: translateX(-50%);
   display: flex; flex-direction: column; align-items: center; gap: 8px;
-  color: rgba(255, 255, 255, 0.72); font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72); font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase;
   transition: opacity 0.4s ease;
 }
 .hero__scrollcue i {
@@ -618,6 +618,17 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .check input { width: 18px; height: 18px; accent-color: var(--lavender); flex: none; margin: 0; }
 .check:has(input:checked) { border-color: var(--lavender); background: var(--lavender-soft); font-weight: 700; }
 .field--tests.is-invalid .check { border-color: var(--error); }
+
+/* ---------- 폼 안내 (기능 준비 중 등) ---------- */
+.form-notice {
+  margin: 0 0 20px; padding: 15px 18px;
+  background: var(--apricot-soft); border: 1px solid #f1dcc8; border-radius: var(--r-sm);
+  font-size: 14px; line-height: 1.75; color: #8a5a2b;
+}
+.lead-form input:disabled,
+.lead-form textarea:disabled { background: #f6f4f1; color: var(--text-mute); cursor: not-allowed; }
+.lead-form button:disabled { opacity: 0.5; cursor: not-allowed; }
+.check:has(input:disabled) { opacity: 0.6; cursor: not-allowed; }
 
 /* ---------- 약관 모달 ---------- */
 .privacy-dialog {
