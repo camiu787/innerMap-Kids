@@ -347,6 +347,50 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .creds .k { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin: 0 0 6px; }
 .creds .v { font-family: var(--display); font-weight: 400; font-size: 17px; margin: 0; line-height: 1.45; }
 
+/* ---------- 전문가 프로필 ---------- */
+.people { display: flex; flex-direction: column; gap: 18px; }
+.person {
+  display: grid; grid-template-columns: 200px minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px); align-items: start;
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: clamp(20px, 2.6vw, 30px);
+  transition: box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.person:hover { box-shadow: var(--shadow-2); transform: translateY(-3px); }
+.person__photo {
+  border-radius: var(--r-md); overflow: hidden; background: var(--lavender-soft);
+  aspect-ratio: 1; box-shadow: var(--shadow-1);
+}
+.person__photo img { width: 100%; height: 100%; object-fit: cover; }
+.person__body h3 { font-size: clamp(20px, 2.2vw, 25px); margin: 0 0 4px; }
+.person__body h3 span { font-size: 0.72em; color: var(--lavender); }
+.person__role {
+  margin: 0 0 20px; font-size: 14px; color: var(--apricot); font-weight: 700; letter-spacing: 0.02em;
+}
+.person__label {
+  margin: 0 0 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-mute); font-weight: 700;
+}
+.person__list {
+  list-style: none; margin: 0 0 20px; padding: 0;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.person__list li {
+  position: relative; padding-left: 14px; font-size: 15px; line-height: 1.7; color: var(--text-soft);
+}
+.person__list li::before {
+  content: ""; position: absolute; left: 0; top: 0.66em;
+  width: 5px; height: 5px; border-radius: 50%; background: var(--lavender);
+}
+.person__list--field { margin-bottom: 0; }
+.person__list--field li::before { background: var(--apricot); }
+.person__list--field li { color: var(--text); font-weight: 600; }
+
+@media (max-width: 700px) {
+  .person { grid-template-columns: 1fr; }
+  .person__photo { width: 150px; }
+}
+
 /* ---------- 매니페스토 ---------- */
 .manifesto {
   background: var(--navy); color: #fff;
@@ -754,6 +798,93 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 @media (prefers-reduced-motion: reduce) {
   .page-head__art svg, .slogan__art svg { animation: none; }
+}
+
+/* ---------- 산문 보조 ---------- */
+.prose--wide { max-width: 46em; }
+.prose__h { font-size: clamp(23px, 3vw, 32px); line-height: 1.42; margin: 0 0 26px; }
+.prose__accent {
+  font-family: var(--display); font-weight: 400;
+  font-size: clamp(18px, 2vw, 23px) !important;
+  line-height: 1.65 !important; color: var(--text) !important;
+  margin: 30px 0 !important; padding-left: 20px; border-left: 3px solid var(--apricot);
+}
+
+/* ---------- 검사 안내 각주 ---------- */
+.table-note {
+  margin: 16px 0 0; font-size: 13.5px; line-height: 1.75; color: var(--text-mute);
+}
+
+/* ---------- TCI 척도 코드 ---------- */
+.tci__col li b em {
+  font-style: normal; font-size: 12.5px; letter-spacing: 0.08em;
+  color: var(--lavender); margin-left: 6px;
+  font-family: var(--sans); font-weight: 700;
+}
+.tci__col.character li b em { color: var(--apricot); }
+
+/* ---------- MBTI 선호지표 ---------- */
+.prefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.pref {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
+  padding: 26px 26px 22px;
+}
+.pref h3 {
+  font-size: 13px; letter-spacing: 0.12em; color: var(--lavender);
+  font-family: var(--sans); font-weight: 700; text-transform: uppercase;
+  margin: 0 0 18px; padding-bottom: 12px; border-bottom: 1px solid var(--line);
+}
+.pref ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+.pref li b { display: block; font-family: var(--display); font-weight: 400; font-size: 18px; margin-bottom: 5px; }
+.pref li b em {
+  font-style: normal; font-family: var(--sans); font-weight: 700;
+  font-size: 12.5px; letter-spacing: 0.06em; color: var(--apricot); margin-left: 7px;
+}
+.pref li span { font-size: 14.5px; line-height: 1.75; color: var(--text-soft); }
+
+/* ---------- 후기 목록 · 작성 ---------- */
+.reviews__state {
+  grid-column: 1 / -1; margin: 0; padding: 34px 0;
+  text-align: center; color: var(--text-mute); font-size: 15px;
+}
+.review--real { border-style: solid; border-color: var(--line); }
+.review__tag {
+  margin-left: auto; font-size: 11.5px; letter-spacing: 0.04em;
+  background: var(--lavender-soft); color: var(--lavender);
+  padding: 5px 10px; border-radius: var(--r-pill); font-weight: 700;
+}
+.review-write { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(28px, 5vw, 60px); align-items: start; }
+.review-write h2 { font-size: clamp(24px, 3vw, 34px); line-height: 1.42; margin-bottom: 16px; }
+.review-write__lead { color: var(--text-soft); line-height: 1.9; margin: 0 0 22px; }
+.review-write__notes {
+  list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 9px;
+  font-size: 14.5px; color: var(--text-soft);
+}
+.review-write__notes li { display: flex; gap: 10px; }
+.review-write__notes li::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--apricot);
+  flex: none; margin-top: 0.62em;
+}
+.field textarea {
+  width: 100%; font-family: inherit; font-size: 15px; color: var(--text);
+  padding: 14px 16px; border: 1px solid var(--line); border-radius: var(--r-sm);
+  background: var(--paper); resize: vertical; line-height: 1.7;
+  transition: border-color var(--duration-base) var(--ease), box-shadow var(--duration-base) var(--ease);
+}
+.field textarea:focus {
+  outline: none; border-color: var(--lavender); box-shadow: 0 0 0 3px rgba(139, 132, 198, 0.2);
+}
+.stars-input { display: flex; gap: 4px; }
+.stars-input button {
+  background: none; border: 0; cursor: pointer; padding: 2px 4px;
+  font-size: 30px; line-height: 1; color: #ddd7cf;
+  transition: color var(--duration-base) var(--ease), transform var(--duration-base) var(--ease);
+}
+.stars-input button:hover { transform: scale(1.12); }
+.stars-input button.on { color: var(--apricot); }
+
+@media (max-width: 900px) {
+  .review-write { grid-template-columns: 1fr; }
 }
 
 /* ---------- 스크롤 등장 ---------- */
