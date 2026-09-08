@@ -29,8 +29,8 @@ function doPost(e) {
       body.name || '',
       body.phone || '',
       body.region || '',
-      body.kidsCount || '',
-      body.kidsAge || '',
+      body.kidsCount || '',   // 2026-09-08 폼에서 제거 — 기존 행 열 정렬 유지를 위해 자리만 남김
+      body.kidsAge || '',     // 동일
       body.tests || '',
       '',
     ]);
@@ -180,8 +180,6 @@ function sendNotification_(body) {
     `이름: ${body.name || ''}`,
     `연락처: ${body.phone || ''}`,
     `거주 지역: ${body.region || ''}`,
-    `자녀 수: ${body.kidsCount || ''}`,
-    `자녀 나이: ${body.kidsAge || ''}`,
     `관심 검사: ${body.tests || ''}`,
     `제출 시각: ${body.submittedAt || new Date().toISOString()}`,
   ].join('\n');

@@ -825,10 +825,13 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .tci__col.character li b em { color: var(--apricot); }
 
 /* ---------- MBTI 선호지표 ---------- */
-.prefs { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.prefs { display: grid; grid-template-columns: 1fr; gap: 16px; }
+@media (min-width: 640px) { .prefs { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* 넓은 화면에서는 4가지 선호지표를 한 줄에 나란히 둔다 */
+@media (min-width: 1000px) { .prefs { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; } }
 .pref {
   background: var(--paper); border: 1px solid var(--line); border-radius: var(--r-lg);
-  padding: 26px 26px 22px;
+  padding: 24px 22px 20px;
 }
 .pref h3 {
   font-size: 13px; letter-spacing: 0.12em; color: var(--lavender);
@@ -841,7 +844,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   font-style: normal; font-family: var(--sans); font-weight: 700;
   font-size: 12.5px; letter-spacing: 0.06em; color: var(--apricot); margin-left: 7px;
 }
-.pref li span { font-size: 14.5px; line-height: 1.75; color: var(--text-soft); }
+.pref li span { font-size: 14px; line-height: 1.72; color: var(--text-soft); }
 
 /* ---------- 후기 목록 · 작성 ---------- */
 .reviews__state {

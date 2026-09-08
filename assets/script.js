@@ -46,13 +46,19 @@ function validate(formData) {
 
   const nameInput = form.elements.name;
   const phoneInput = form.elements.phone;
+  const regionInput = form.elements.region;
   const privacy1 = form.elements.privacy1;
   const privacy2 = form.elements.privacy2;
   const phoneDigits = normalizePhone(fields.phone || '');
 
   if (!fields.name?.trim()) {
-    setFieldError(nameInput, '학부모 이름을 입력해 주세요.');
+    setFieldError(nameInput, '이름을 입력해 주세요.');
     firstInvalid ||= nameInput;
+  }
+
+  if (!fields.region?.trim()) {
+    setFieldError(regionInput, '거주 지역을 입력해 주세요.');
+    firstInvalid ||= regionInput;
   }
 
   if (!phoneDigits) {
@@ -84,8 +90,6 @@ function validate(formData) {
     name: fields.name.trim(),
     phone: phoneDigits,
     region: fields.region?.trim() || '',
-    kidsCount: fields.kidsCount || '',
-    kidsAge: fields.kidsAge?.trim() || '',
     tests: tests.join(', '),
     privacy: true,
     marketing: form.elements.privacy3?.checked || false,
