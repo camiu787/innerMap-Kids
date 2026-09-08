@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script>
+    // http 로 들어온 방문자를 https 로 보낸다 (GitHub Pages 의 Enforce HTTPS 를 켤 수 없는 동안의 대체 수단)
+    if (location.protocol === 'http:' && /(^|\.)neobanalab\.com$/.test(location.hostname)) {
+      location.replace('https://' + location.host + location.pathname + location.search + location.hash);
+    }
+  </script>
   <meta name="description" content="너를 알고, 나를 이해하며 서로의 다름을 발견하는 것. 너바나는 유전자지문적성검사·MBTI·TCI로 각자의 성향과 기질, 강점과 차이를 살펴봅니다." />
   <title>너바나 NEOBANA — 너를 알고, 나를 알다</title>
   <link rel="icon" href="favicon.ico" sizes="32x32" />
@@ -16,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css?v=20260909a" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260909b" />
   <script>document.documentElement.className += ' js';</script>
 
   <link rel="canonical" href="https://neobanalab.com/" />
@@ -359,6 +365,6 @@
     </div>
   </footer>
 
-  <script src="assets/site.js?v=20260909a" defer></script>
+  <script src="assets/site.js?v=20260909b" defer></script>
 </body>
 </html>
