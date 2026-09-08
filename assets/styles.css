@@ -124,7 +124,7 @@ h1, h2, h3 {
 .logo { display: flex; align-items: center; gap: 11px; }
 .logo svg { width: 34px; height: 34px; flex: none; }
 .logo b { font-family: var(--display); font-size: 21px; font-weight: 400; letter-spacing: 0; }
-.logo small { font-size: 10px; letter-spacing: 0.22em; color: var(--text-mute); display: block; margin-top: -3px; }
+.logo small { font-size: 11px; letter-spacing: 0.22em; color: var(--text-mute); display: block; margin-top: -3px; }
 
 /* ---------- 내비 ---------- */
 .nav {
@@ -325,7 +325,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   padding-top: 22px; border-top: 1px solid var(--line); margin-top: 26px;
 }
 .about__meta div { display: flex; flex-direction: column; gap: 3px; }
-.about__meta .k { font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
+.about__meta .k { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); }
 .about__meta .v { font-family: var(--display); font-weight: 400; font-size: 17px; }
 
 /* ---------- 전문가 소개 ---------- */
@@ -354,7 +354,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 .creds { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 26px; }
 .creds div { background: var(--ivory); border-radius: var(--r-md); padding: 18px 20px; }
-.creds .k { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin: 0 0 6px; }
+.creds .k { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--text-mute); margin: 0 0 6px; }
 .creds .v { font-family: var(--display); font-weight: 400; font-size: 17px; margin: 0; line-height: 1.45; }
 
 /* ---------- 전문가 프로필 ---------- */
@@ -379,7 +379,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   margin: 0 0 20px; font-size: 14px; color: var(--apricot); font-weight: 700; letter-spacing: 0.02em;
 }
 .person__label {
-  margin: 0 0 8px; font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+  margin: 0 0 8px; font-size: 12.5px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--text-mute); font-weight: 700;
 }
 .person__list {
@@ -440,7 +440,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round;
 }
 .card .k {
-  font-size: 11.5px; letter-spacing: 0.14em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
   color: var(--apricot); margin: 0 0 8px; font-weight: 600;
 }
 .card h3 { font-size: 18px; line-height: 1.5; margin-bottom: 10px; }
@@ -494,7 +494,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 .review .chip {
   position: absolute; top: 16px; right: 16px;
-  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
   background: var(--lavender-soft); color: var(--lavender);
   padding: 5px 10px; border-radius: var(--r-pill); font-weight: 700;
 }
@@ -525,7 +525,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 
 /* ---------- 신청 ---------- */
 .apply { background: var(--navy); color: #fff; }
-.apply .wrap { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(30px, 5vw, 64px); align-items: center; }
+.apply .wrap { display: grid; grid-template-columns: 0.95fr 1.05fr; gap: clamp(30px, 5vw, 64px); align-items: start; }
 .apply .eyebrow { color: var(--apricot); }
 .apply h2 { font-size: clamp(24px, 3.2vw, 36px); line-height: 1.42; margin-bottom: 16px; }
 .apply__intro > p { color: rgba(255, 255, 255, 0.76); line-height: 1.9; margin: 0 0 22px; }
@@ -745,7 +745,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px 26px;
 }
 .spec div { display: flex; flex-direction: column; gap: 5px; }
-.spec dt { font-size: 12px; letter-spacing: 0.08em; color: var(--text-mute); }
+.spec dt { font-size: 12.5px; letter-spacing: 0.08em; color: var(--text-mute); }
 .spec dd { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--text); font-weight: 500; }
 
 /* ---------- 본문 산문 (검사 소개) ---------- */
@@ -885,7 +885,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 }
 .review--real { border-style: solid; border-color: var(--line); }
 .review__tag {
-  margin-left: auto; font-size: 11.5px; letter-spacing: 0.04em;
+  margin-left: auto; font-size: 12px; letter-spacing: 0.04em;
   background: var(--lavender-soft); color: var(--lavender);
   padding: 5px 10px; border-radius: var(--r-pill); font-weight: 700;
 }
