@@ -211,6 +211,10 @@ canonical·OG·JSON-LD·sitemap·llms.txt의 절대 URL을 전부 교체해야 �
 - JSON-LD `@graph` — 페이지 타입 + `BreadcrumbList` + 조직 엔티티(`EducationalOrganization`/`LocalBusiness`)
 - 홈은 히어로 이미지 `preload` 추가
 
+파비콘·아이콘 (2026-09-08 추가): `favicon.ico`, `assets/icons/favicon.svg`,
+`favicon-16/32/48.png`, `apple-touch-icon.png`(180), `icon-192/512.png`, `site.webmanifest`.
+로고 모티프(겹친 두 원 + 별)를 Pillow 스크립트로 렌더링했다. 브랜드 색이 바뀌면 다시 생성해야 한다.
+
 사이트 루트 파일:
 - `robots.txt` — 검색 크롤러 + AI 답변엔진(GPTBot, ClaudeBot, PerplexityBot, OAI-SearchBot, Yeti, Daumoa) 허용
 - `sitemap.xml` — 9개 페이지. **페이지를 추가하면 여기도 추가한다.**
@@ -219,7 +223,9 @@ canonical·OG·JSON-LD·sitemap·llms.txt의 절대 URL을 전부 교체해야 �
 
 페이지별 귀여운 인라인 SVG 일러스트가 `.page-head__art` 에 들어 있다 (외부 이미지 아님, 브랜드 색만 사용).
 
-AEO 장치: `faq.html` 의 `FAQPage` 구조화 데이터, 검사 3개 페이지의 `.spec` 요약(`<dl>`) 블록,
+AEO 장치: `faq.html` + **검사 3개 페이지 각각의 `FAQPage`**(2026-09-08 추가, 페이지당 4문항 —
+본문 사실만으로 작성, 새 사실을 넣지 말 것), 조직 스키마의 `OfferCatalog`·`openingHoursSpecification`·`priceRange`,
+검사 3종 상호 내부 링크(`.more-tests`), 검사 3개 페이지의 `.spec` 요약(`<dl>`) 블록,
 각 페이지 헤더의 한 문장 요약 리드.
 
 **가격 (2026-09-08 확정, 모두 1:1 대면 해석상담 포함):**

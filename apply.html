@@ -5,12 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="연락처를 남겨주시면 24시간 안에 전화드려 일정을 잡습니다. 동탄 상담실 방문 또는 비대면으로 진행합니다." />
   <title>상담 신청 — 너바나 NEOBANA</title>
+  <link rel="icon" href="favicon.ico" sizes="32x32" />
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/icons/favicon-16.png" />
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css?v=20260908b" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260908c" />
 
   <link rel="canonical" href="https://camiu787.github.io/innerMap-Kids/apply.html" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -118,7 +124,61 @@
           "name": "TCI 기질 및 성격검사",
           "url": "https://camiu787.github.io/innerMap-Kids/tci.html"
         }
-      ]
+      ],
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "10:00",
+          "closes": "18:00"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "너바나 검사 프로그램",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "price": "79000",
+            "priceCurrency": "KRW",
+            "url": "https://camiu787.github.io/innerMap-Kids/dna.html",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "유전자지문적성검사",
+              "url": "https://camiu787.github.io/innerMap-Kids/dna.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "59000",
+            "priceCurrency": "KRW",
+            "url": "https://camiu787.github.io/innerMap-Kids/tci.html",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "TCI 기질 및 성격검사",
+              "url": "https://camiu787.github.io/innerMap-Kids/tci.html"
+            }
+          },
+          {
+            "@type": "Offer",
+            "price": "49000",
+            "priceCurrency": "KRW",
+            "url": "https://camiu787.github.io/innerMap-Kids/mbti.html",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "MBTI 성격유형검사",
+              "url": "https://camiu787.github.io/innerMap-Kids/mbti.html"
+            }
+          }
+        ]
+      },
+      "priceRange": "49,000원 ~ 79,000원"
     }
   ]
 }
@@ -322,7 +382,7 @@
     <button class="button button--dark" type="button" data-close-privacy>확인했습니다</button>
   </dialog>
 
-  <script src="assets/site.js?v=20260908b" defer></script>
-  <script src="assets/script.js?v=20260908b" defer></script>
+  <script src="assets/site.js?v=20260908c" defer></script>
+  <script src="assets/script.js?v=20260908c" defer></script>
 </body>
 </html>

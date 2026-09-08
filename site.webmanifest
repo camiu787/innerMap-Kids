@@ -1,0 +1,16 @@
+{
+  "name": "너바나 NEOBANA",
+  "short_name": "너바나",
+  "description": "유전자지문적성검사·TCI·MBTI로 각자의 성향과 기질을 이해하는 교육 상담 기관",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#FAF7F2",
+  "theme_color": "#2E2B57",
+  "lang": "ko-KR",
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "assets/icons/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
