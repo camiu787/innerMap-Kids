@@ -22,4 +22,4 @@ Allow: /
 User-agent: Daumoa
 Allow: /
 
-Sitemap: https://camiu787.github.io/innerMap-Kids/sitemap.xml
+Sitemap: https://neobanalab.com/sitemap.xml

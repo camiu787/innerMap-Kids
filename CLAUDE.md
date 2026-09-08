@@ -202,8 +202,15 @@ PROGRAMS:
 
 ## SEO / AEO / GEO
 
-기준 URL은 `https://camiu787.github.io/innerMap-Kids/` 다. **커스텀 도메인으로 옮기면
-canonical·OG·JSON-LD·sitemap·llms.txt의 절대 URL을 전부 교체해야 한다.**
+**기준 URL: `https://neobanalab.com/`** (2026-09-08 커스텀 도메인 연결 완료).
+
+- 도메인: Vercel(개인 계정 `kimseonwoos-projects-a51baabc`)에서 구매·DNS 호스팅, 만료 2027-09-08.
+  **호스팅은 GitHub Pages다** — Vercel 프로젝트에 도메인을 연결하면 A 레코드가 Vercel로 되돌아가 사이트가 죽는다.
+- DNS: apex A 4개(185.199.108~111.153) + AAAA 4개(2606:50c0:8000~8003::153), `www` CNAME → `camiu787.github.io`.
+  `vercel dns ls neobanalab.com` 으로 확인. CAA는 letsencrypt.org 허용 상태여야 인증서가 발급된다.
+- 레포 루트 `CNAME` 파일이 커스텀 도메인을 활성화한다. 지우면 도메인 연결이 끊긴다.
+- 구 주소 `camiu787.github.io/innerMap-Kids` 는 GitHub가 새 도메인으로 자동 리다이렉트한다.
+- **도메인을 또 바꾸면** canonical·OG·JSON-LD·sitemap·robots·llms.txt의 절대 URL을 전부 교체해야 한다.
 
 각 페이지 `<head>` 에 들어 있는 것:
 - `canonical`, `robots`(index, follow, max-image-preview:large), `theme-color`
