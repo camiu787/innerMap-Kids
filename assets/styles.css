@@ -1027,7 +1027,6 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .field--choice > span em, .ev-q em { color: var(--apricot); font-style: normal; }
 .field--choice.is-invalid .check { border-color: var(--error); }
 .check span { word-break: keep-all; line-height: 1.55; }
-.ev-health { margin-top: 22px; padding-top: 22px; border-top: 1px dashed var(--line); }
 .ev-consent {
   background: var(--ivory); border: 1px solid var(--line); border-radius: var(--r-md);
   padding: 20px 20px 14px; margin-bottom: 14px;

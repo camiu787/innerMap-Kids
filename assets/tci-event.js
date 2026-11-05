@@ -1,7 +1,6 @@
 /* 너바나 — TCI 기질·성격검사 이벤트 신청서 (tci-event.html)
-   - 보험 보장분석 "예" 선택 시에만 건강정보 문항을 연다.
-   - 건강정보(민감정보)는 4번 동의(민감정보 수집·이용)가 '동의'일 때만 전송한다.
-     서버(Code.gs handleTciEvent_)도 같은 조건으로 한 번 더 걸러낸다.
+   - 건강정보(민감정보)는 받지 않는다 (2026-11-05 법적 리스크 축소 결정).
+     보장분석에 필요한 건강정보는 상담 시 보험사·GA 정식 절차로 받는다.
    - 백엔드가 이 기능을 지원하지 않는 구버전이면 폼을 잠근다 (조용한 유실 방지). */
 
 (function () {
@@ -11,11 +10,7 @@
   const form = document.getElementById('tciEventForm');
   const alertBox = document.getElementById('tciEventAlert');
   const done = document.getElementById('tciEventDone');
-  const healthBlock = document.getElementById('healthBlock');
   if (!form) return;
-
-  const HEALTH_CHECKS = ['h_recent', 'h_major', 'h_meds', 'h_checkup'];
-  const HEALTH_TEXTS = ['h_recentDetail', 'h_surgeryDetail', 'h_majorDetail', 'h_medsDetail', 'h_checkupDetail'];
 
   /* ---------- 백엔드 버전 확인 ---------- */
   function lockForm(message) {
@@ -34,21 +29,6 @@
       }
     })
     .catch(() => { /* 네트워크 오류는 제출 시점에 다시 드러난다 */ });
-
-  /* ---------- 보장분석 선택 → 건강정보 문항 토글 ---------- */
-  function syncHealth() {
-    const yes = form.elements.insurance.value === '예';
-    healthBlock.hidden = !yes;
-  }
-  form.querySelectorAll('input[name="insurance"]').forEach((r) => r.addEventListener('change', syncHealth));
-
-  /* ---------- "해당 사항 없음"은 다른 항목과 배타 ---------- */
-  form.querySelectorAll('[data-none-group]').forEach((group) => {
-    const none = group.querySelector('[data-none]');
-    const others = Array.prototype.filter.call(group.querySelectorAll('input'), (i) => i !== none);
-    none.addEventListener('change', () => { if (none.checked) others.forEach((o) => { o.checked = false; }); });
-    others.forEach((o) => o.addEventListener('change', () => { if (o.checked) none.checked = false; }));
-  });
 
   /* ---------- 검증 ---------- */
   function setAlert(message, type) {
@@ -72,12 +52,6 @@
     alertBox.className = 'form-alert';
   }
 
-  function hasHealthInput() {
-    if (form.elements.h_surgery.value) return true;
-    if (HEALTH_CHECKS.some((n) => form.querySelectorAll('input[name="' + n + '"]:checked').length)) return true;
-    return HEALTH_TEXTS.some((n) => form.elements[n].value.trim());
-  }
-
   function collect() {
     clearErrors();
     const el = form.elements;
@@ -96,12 +70,6 @@
     if (el.c1.value !== '동의') fail(form.querySelector('input[name="c1"]'), '검사 진행을 위해 필수 동의가 필요합니다.');
     if (el.c2.value !== '동의') fail(form.querySelector('input[name="c2"]'), '자녀 검사 진행을 위해 법정대리인 동의가 필요합니다.');
 
-    const insuranceYes = el.insurance.value === '예';
-    const sensitiveOk = el.c4.value === '동의';
-    if (insuranceYes && hasHealthInput() && !sensitiveOk) {
-      fail(form.querySelector('input[name="c4"]'),
-        '건강정보를 보내시려면 4번 민감정보 수집·이용에 동의해 주세요. 동의하지 않으시려면 03의 건강정보 칸을 비워 주세요.');
-    }
 
     if (first) {
       first.focus({ preventScroll: false });
@@ -120,18 +88,9 @@
       insurance: el.insurance.value,
       c1: el.c1.value, c2: el.c2.value,
       c3: el.c3.value || '미선택', c4: el.c4.value || '미선택',
-      c5: el.c5.value || '미선택', c6: el.c6.value || '미선택',
       submittedAt: new Date().toISOString(),
     };
 
-    // 민감정보: 보장분석 '예' + 4번 동의일 때만 담는다
-    if (insuranceYes && sensitiveOk) {
-      HEALTH_CHECKS.forEach((n) => {
-        payload[n] = Array.prototype.map.call(form.querySelectorAll('input[name="' + n + '"]:checked'), (i) => i.value).join(', ');
-      });
-      payload.h_surgery = el.h_surgery.value;
-      HEALTH_TEXTS.forEach((n) => { payload[n] = el[n].value.trim(); });
-    }
     return payload;
   }
 
