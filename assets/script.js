@@ -4,7 +4,6 @@ const form = document.querySelector('#leadForm');
 const alertBox = document.querySelector('#formAlert');
 const privacyDialogs = {
   1: document.querySelector('#privacyDialog1'),
-  2: document.querySelector('#privacyDialog2'),
   3: document.querySelector('#privacyDialog3'),
 };
 
@@ -48,7 +47,6 @@ function validate(formData) {
   const phoneInput = form.elements.phone;
   const regionInput = form.elements.region;
   const privacy1 = form.elements.privacy1;
-  const privacy2 = form.elements.privacy2;
   const phoneDigits = normalizePhone(fields.phone || '');
 
   if (!fields.name?.trim()) {
@@ -76,8 +74,8 @@ function validate(formData) {
     firstInvalid ||= form.querySelector('input[name="tests"]');
   }
 
-  if (!privacy1.checked || !privacy2.checked) {
-    document.querySelector('#privacyError').textContent = '필수 개인정보 항목에 모두 동의해 주세요.';
+  if (!privacy1.checked) {
+    document.querySelector('#privacyError').textContent = '개인정보 수집 및 이용에 동의해 주세요.';
     firstInvalid ||= privacy1;
   }
 

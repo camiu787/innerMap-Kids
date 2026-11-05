@@ -639,6 +639,12 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .privacy-dialog::backdrop { background: rgba(33, 32, 63, 0.5); }
 .privacy-dialog h2 { font-size: 20px; margin-bottom: 14px; padding-right: 30px; }
 .privacy-dialog p { color: var(--text-soft); font-size: 14.5px; line-height: 1.9; margin: 0 0 24px; }
+.privacy-dialog .dialog-list {
+  list-style: none; margin: 0 0 16px; padding: 0; display: flex; flex-direction: column; gap: 8px;
+  color: var(--text-soft); font-size: 14px; line-height: 1.7; word-break: keep-all;
+}
+.privacy-dialog .dialog-list b { display: inline-block; min-width: 7.5em; color: var(--text); }
+.privacy-dialog a { color: var(--lavender); }
 .dialog-close {
   position: absolute; top: 16px; right: 18px;
   background: none; border: 0; font-size: 24px; line-height: 1;

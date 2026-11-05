@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="assets/styles.css?v=20261105c" />
+  <link rel="stylesheet" href="assets/styles.css?v=20261105d" />
 
   <link rel="canonical" href="https://neobanalab.com/apply.html" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -302,10 +302,6 @@
               <span>개인정보의 수집 및 이용 <em class="consent-required">(필수)</em> <button type="button" data-open-privacy="1">(약관 보기)</button></span>
             </label>
             <label class="consent">
-              <input name="privacy2" type="checkbox" required />
-              <span>개인정보의 제3자 제공 <em class="consent-required">(필수)</em> <button type="button" data-open-privacy="2">(약관 보기)</button></span>
-            </label>
-            <label class="consent">
               <input name="privacy3" type="checkbox" />
               <span>개인정보의 마케팅 활용 <em class="consent-optional">(선택)</em> <button type="button" data-open-privacy="3">(약관 보기)</button></span>
             </label>
@@ -374,23 +370,28 @@
   <dialog class="privacy-dialog" id="privacyDialog1" aria-labelledby="privacy-title-1">
     <button class="dialog-close" type="button" data-close-privacy aria-label="닫기">×</button>
     <h2 id="privacy-title-1">개인정보의 수집 및 이용 안내</h2>
-    <p>상담 신청을 위해 학부모 이름, 연락처, 거주 지역, 자녀 수, 자녀 나이를 수집합니다. 수집된 정보는 상담 안내와 일정 조율 목적으로만 사용되며, 목적 달성 후 관련 법령에 따라 안전하게 보관 또는 파기됩니다.</p>
-    <button class="button button--dark" type="button" data-close-privacy>확인했습니다</button>
-  </dialog>
-  <dialog class="privacy-dialog" id="privacyDialog2" aria-labelledby="privacy-title-2">
-    <button class="dialog-close" type="button" data-close-privacy aria-label="닫기">×</button>
-    <h2 id="privacy-title-2">개인정보의 제3자 제공 안내</h2>
-    <p>수집된 개인정보는 검사 전문 상담사에게 제공될 수 있으며, 상담 목적 외의 용도로는 사용되지 않습니다. 제3자 제공에 동의하지 않으실 경우 서비스 이용이 제한될 수 있습니다.</p>
+    <ul class="dialog-list">
+      <li><b>수집 항목</b> 이름, 연락처, 거주 지역, 관심 있는 검사</li>
+      <li><b>이용 목적</b> 상담 신청 접수, 상담 안내 및 일정 조율, 검사 진행 및 결과 상담</li>
+      <li><b>보유 기간</b> 수집일로부터 1년 (삭제를 요청하시면 지체 없이 파기)</li>
+      <li><b>동의 거부 권리</b> 동의를 거부하실 수 있으나, 이 경우 온라인 상담 신청이 제한됩니다. 전화(010-9542-2406)로 신청하실 수 있습니다.</li>
+    </ul>
+    <p>입력하신 정보는 신청 접수를 위해 Google(미국)의 스프레드시트·메일 서비스에 저장됩니다. 자세한 내용은 <a href="privacy.html">개인정보처리방침</a>을 확인해 주세요.</p>
     <button class="button button--dark" type="button" data-close-privacy>확인했습니다</button>
   </dialog>
   <dialog class="privacy-dialog" id="privacyDialog3" aria-labelledby="privacy-title-3">
     <button class="dialog-close" type="button" data-close-privacy aria-label="닫기">×</button>
     <h2 id="privacy-title-3">개인정보의 마케팅 활용 안내</h2>
-    <p>신규 프로그램, 유용한 육아 정보 등 마케팅 목적으로 연락처를 활용할 수 있습니다. 동의하지 않으셔도 상담 신청에는 영향이 없습니다.</p>
+    <ul class="dialog-list">
+      <li><b>이용 항목</b> 이름, 연락처</li>
+      <li><b>이용 목적</b> 신규 프로그램·검사 안내</li>
+      <li><b>보유 기간</b> 수집일로부터 1년 또는 동의 철회 시까지 중 먼저 도래하는 때</li>
+      <li><b>동의 거부 권리</b> 선택 항목이며, 동의하지 않으셔도 상담 신청에는 영향이 없습니다. 언제든 전화나 이메일로 철회하실 수 있습니다.</li>
+    </ul>
     <button class="button button--dark" type="button" data-close-privacy>확인했습니다</button>
   </dialog>
 
   <script src="assets/site.js?v=20260909e" defer></script>
-  <script src="assets/script.js?v=20260909e" defer></script>
+  <script src="assets/script.js?v=20261105a" defer></script>
 </body>
 </html>
