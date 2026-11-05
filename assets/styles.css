@@ -1094,3 +1094,16 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
   .policy__card { grid-template-columns: 1fr; gap: 2px; }
   .policy__card dd { margin-bottom: 8px; }
 }
+
+/* ---------- TCI 이벤트 안내 박스 (tci.html 검사 안내 아래) ---------- */
+.event-box {
+  display: flex; align-items: center; justify-content: space-between; gap: 20px 28px; flex-wrap: wrap;
+  margin-top: 28px; padding: clamp(22px, 3vw, 30px) clamp(22px, 3.4vw, 34px);
+  background: var(--lavender-soft); border: 1px solid #ded8f0; border-radius: var(--r-lg);
+}
+.event-box > div { flex: 1 1 320px; }
+.event-box .eyebrow { margin-bottom: 6px; }
+.event-box h3 { font-family: var(--display); font-weight: 400; font-size: clamp(20px, 2.4vw, 24px); color: var(--navy); margin: 0 0 6px; }
+.event-box p:last-child { margin: 0; color: var(--text-soft); font-size: 14.5px; line-height: 1.75; word-break: keep-all; }
+.event-box .button { flex: none; }
+@media (max-width: 560px) { .event-box .button { width: 100%; justify-content: center; } }
