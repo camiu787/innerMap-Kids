@@ -1108,6 +1108,7 @@ html.js .hero__copy.s3 > * { opacity: 1; transform: none; }
 .event-box .button { flex: none; }
 .event-top { padding: clamp(28px, 4vw, 44px) 0 0; }
 .event-top .event-box { box-shadow: var(--shadow-2); }
+.event-top--bottom { padding: clamp(48px, 7vw, 88px) 0; }
 .button--lg { padding: 21px 40px; font-size: 17px; font-weight: 700; gap: 12px; }
 .button--lg svg { width: 20px; height: 20px; stroke-width: 2; }
 @media (max-width: 560px) { .event-box .button { width: 100%; justify-content: center; } }
