@@ -10,7 +10,6 @@
 const SHEET_ID = '1ElDCHvONz6QgbRMGxVD5Kr0MnDPS1tR2lMcNviuayMY';
 const SHEET_NAME = '신청내역';
 const REVIEW_SHEET_NAME = '후기';
-const TCI_EVENT_SHEET_NAME = 'TCI이벤트';
 const NOTIFY_EMAIL = 'camiu787@gmail.com';
 
 function doPost(e) {
@@ -20,11 +19,6 @@ function doPost(e) {
     // 후기 등록은 별도 시트로 분리한다. 승인('Y') 전에는 사이트에 노출되지 않는다.
     if (body.type === 'review') {
       return handleReview_(body);
-    }
-
-    // TCI 이벤트 신청서 (tci-event.html). 건강정보(민감정보)가 들어올 수 있어 별도 시트로 분리한다.
-    if (body.type === 'tci-event') {
-      return handleTciEvent_(body);
     }
 
     validate_(body);
@@ -54,78 +48,10 @@ function doGet(e) {
   if (type === 'reviews') {
     return json_({ ok: true, reviews: listApprovedReviews_() });
   }
-  // tci-event.html 이 이 응답으로 백엔드 지원 여부를 확인한다. 없으면 폼을 잠근다.
-  if (type === 'tci-event') {
-    return json_({ ok: true, tciEvent: true });
-  }
   return json_({ ok: true, service: 'neobana-leads' });
 }
 
-/* ==================== TCI 이벤트 신청서 ==================== */
-
-const TCI_EVENT_HEADER = [
-  '제출시각', '신청인', '연락처', '주소', '관계', '자녀이름', '생년월일', '신청이유', '보장분석희망',
-  '동의1_검사(필수)', '동의2_법정대리인(필수)', '동의3_보험개인정보', '동의4_개인정보제3자',
-  '처리상태',
-];
-
-/** 건강정보(민감정보)는 받지 않는다 (2026-11-05). 보장분석용 건강정보는 상담 시 GA 정식 절차로 받는다. */
-function handleTciEvent_(body) {
-  const str = (v, max) => String(v || '').trim().slice(0, max || 500);
-  const phone = String(body.phone || '').replace(/[^0-9]/g, '');
-
-  if (!str(body.name)) throw new Error('성함이 필요합니다.');
-  if (phone.length < 9 || phone.length > 11) throw new Error('연락처 형식이 올바르지 않습니다.');
-  if (!str(body.childName)) throw new Error('자녀 이름이 필요합니다.');
-  if (!str(body.childBirth)) throw new Error('생년월일이 필요합니다.');
-  if (!str(body.reason)) throw new Error('신청 이유가 필요합니다.');
-  if (body.c1 !== '동의' || body.c2 !== '동의') throw new Error('필수 동의가 필요합니다.');
-
-  const sheet = getTciEventSheet_();
-  sheet.appendRow([
-    new Date(), str(body.name, 100), phone, str(body.address, 300), str(body.relation, 30),
-    str(body.childName, 100), str(body.childBirth, 20), str(body.reason, 3000), str(body.insurance, 10),
-    str(body.c1, 10), str(body.c2, 10), str(body.c3, 10), str(body.c4, 10),
-    '',
-  ]);
-
-  notifyTciEvent_({
-    name: str(body.name, 100), phone: phone, insurance: str(body.insurance, 10),
-    c3: str(body.c3, 10), c4: str(body.c4, 10),
-  });
-  return json_({ ok: true });
-}
-
-function getTciEventSheet_() {
-  const ss = SpreadsheetApp.openById(SHEET_ID);
-  let sheet = ss.getSheetByName(TCI_EVENT_SHEET_NAME);
-  if (!sheet) sheet = ss.insertSheet(TCI_EVENT_SHEET_NAME);
-  if (sheet.getLastRow() === 0) {
-    sheet.appendRow(TCI_EVENT_HEADER);
-    return sheet;
-  }
-  const current = sheet.getRange(1, 1, 1, TCI_EVENT_HEADER.length).getValues()[0];
-  const same = TCI_EVENT_HEADER.every((label, i) => String(current[i] || '') === label);
-  if (!same) sheet.getRange(1, 1, 1, TCI_EVENT_HEADER.length).setValues([TCI_EVENT_HEADER]);
-  return sheet;
-}
-
-/** 알림 메일에는 자녀 정보·신청 사유를 넣지 않는다. 상세는 시트에서 확인한다. */
-function notifyTciEvent_(info) {
-  if (!NOTIFY_EMAIL) return;
-  const subject = `[TCI 이벤트] ${info.name}님 신청 — 보장분석 ${info.insurance}`;
-  const textBody = [
-    'TCI 이벤트 신청서가 접수되었습니다. 상세 내용은 구글 시트 「' + TCI_EVENT_SHEET_NAME + '」 탭에서 확인하세요.',
-    '',
-    `신청인: ${info.name}`,
-    `연락처: ${info.phone}`,
-    `보장분석 희망: ${info.insurance}`,
-    `보험 점검용 개인정보 동의: ${info.c3} / 제3자(위드지사) 제공 동의: ${info.c4}`,
-    '',
-    '※ 위드지사 제공은 제3자 제공 동의가 「동의」인 경우에만 가능합니다.',
-  ].join('\n');
-  MailApp.sendEmail(NOTIFY_EMAIL, subject, textBody);
-}
+/* TCI 이벤트 신청서는 별도 스프레드시트·웹앱으로 분리했다 → apps-script/TciEvent.gs */
 
 /* ==================== 후기 ==================== */
 

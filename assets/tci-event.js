@@ -5,7 +5,7 @@
 
 (function () {
   const APPS_SCRIPT_URL =
-    'https://script.google.com/macros/s/AKfycbz3Xq6_4T2K3-VCw3RcKTv5utSktrjR7thWBxoR0MdTSwNaI0qmTogInhEpCOygsGrPnw/exec';
+    'https://script.google.com/macros/s/AKfycbxikrmyv7hfAGaVWMgAX343VSjFFvPtas3e9zMlMDaGePtOhsjT-lbUbe1DjjJGiOe-4Q/exec'; // TCI 이벤트 전용 웹앱 (apps-script/TciEvent.gs)
 
   const form = document.getElementById('tciEventForm');
   const alertBox = document.getElementById('tciEventAlert');
@@ -21,14 +21,18 @@
     form.prepend(notice);
   }
 
-  fetch(APPS_SCRIPT_URL + '?type=tci-event', { method: 'GET' })
-    .then((res) => res.json())
-    .then((data) => {
-      if (!data || data.tciEvent !== true) {
-        lockForm('신청서 접수를 준비하고 있습니다. 준비가 끝나면 바로 열립니다. 급하신 문의는 010-9542-2406 으로 연락 주세요.');
-      }
-    })
-    .catch(() => { /* 네트워크 오류는 제출 시점에 다시 드러난다 */ });
+  const LOCK_MESSAGE = '신청서 접수를 준비하고 있습니다. 준비가 끝나면 바로 열립니다. 급하신 문의는 010-9542-2406 으로 연락 주세요.';
+
+  if (!APPS_SCRIPT_URL) {
+    lockForm(LOCK_MESSAGE);
+  } else {
+    fetch(APPS_SCRIPT_URL + '?type=tci-event', { method: 'GET' })
+      .then((res) => res.json())
+      .then((data) => {
+        if (!data || data.tciEvent !== true) lockForm(LOCK_MESSAGE);
+      })
+      .catch(() => { /* 네트워크 오류는 제출 시점에 다시 드러난다 */ });
+  }
 
   /* ---------- 검증 ---------- */
   function setAlert(message, type) {
